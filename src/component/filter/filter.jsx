@@ -1,4 +1,4 @@
-import React from "react";
+import "./filter.scss";
 
 function Filter() {
   return (
@@ -58,7 +58,7 @@ function Filter() {
           <label htmlFor="bedroom">Bedroom</label>
           <input type="text" id="bedroom" name="bedroom" placeholder="any" />
         </div>
-        <button>
+        <button className="button">
           <img src="./search.png"></img>
         </button>
       </div>
