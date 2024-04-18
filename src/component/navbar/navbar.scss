@@ -4,7 +4,7 @@
   height: 100px;
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  align-items: center;
 
   a {
     transition: all 0.4s ease;
@@ -45,12 +45,14 @@
       }
     }
   }
+
   .right {
     flex: 2;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-color: #fcf5;
+    background-color: #fcf5f3;
+    // background-color: #fcf5;
     height: 100%;
 
     @include md {
