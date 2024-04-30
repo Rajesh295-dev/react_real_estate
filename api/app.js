@@ -2,6 +2,7 @@ import express from "express";
 import authRoute from "./routes/auth.route.js"
 import postRoute from "./routes/post.route.js"
 const app = express();
+app.use(express.json())
 
 // this is if console ninja doesnot work
 // export PATH="$PATH:/Users/rajeshgautam/.console-ninja/.bin"
