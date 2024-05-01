@@ -1,8 +1,11 @@
 import express from "express";
+import CookieParser from "cookie-parser";
 import authRoute from "./routes/auth.route.js"
 import postRoute from "./routes/post.route.js"
+import cookieParser from "cookie-parser";
 const app = express();
 app.use(express.json())
+app.use(cookieParser())
 
 // this is if console ninja doesnot work
 // export PATH="$PATH:/Users/rajeshgautam/.console-ninja/.bin"
