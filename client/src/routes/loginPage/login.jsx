@@ -9,19 +9,19 @@ function Login() {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    isLoading(true);
+    setError("");
+    setIsLoading(true);
     const formData = new FormData(e.target);
     const username = formData.get("username");
-    const email = formData.get("email");
     const password = formData.get("password");
 
     try {
       const res = await apiRequest.post("/auth/login", {
         username,
-        email,
         password,
       });
-      navigate("/login");
+      localStorage.setItem("user", JSON.stringify(res.data));
+      navigate("/");
       // console.log(res.data);
     } catch (err) {
       console.log(err);
@@ -37,8 +37,20 @@ function Login() {
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
           <h1>Welcome back</h1>
-          <input name="username" type="text" placeholder="Username" />
-          <input name="password" type="password" placeholder="Password" />
+          <input
+            name="username"
+            required
+            minLength={3}
+            maxLength={20}
+            type="text"
+            placeholder="Username"
+          />
+          <input
+            name="password"
+            type="password"
+            required
+            placeholder="Password"
+          />
           <button disabled={isLoading}>Login</button>
           {error && <span>{error}</span>}
           <Link to="/register">{"Don't"} you have an account?</Link>
