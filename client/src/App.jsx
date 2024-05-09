@@ -9,6 +9,8 @@ import Login from "./routes/loginPage/login";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
+import NewPostPage from "./routes/newPostPage/newPostPage";
+import { singlePageLoader } from "./library/loaders.js";
 
 function App() {
   const router = createBrowserRouter([
@@ -27,6 +29,7 @@ function App() {
         {
           path: "/:id",
           element: <SinglePage />,
+          loader: singlePageLoader,
         },
 
         {
@@ -50,6 +53,10 @@ function App() {
         {
           path: "/profile/update",
           element: <ProfileUpdatePage />,
+        },
+        {
+          path: "/add",
+          element: <NewPostPage />,
         },
       ],
     },

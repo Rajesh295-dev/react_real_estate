@@ -3,8 +3,11 @@ import Slider from "../../component/slider/slider";
 import Map from "../../component/map/map";
 
 import { singlePostData, userData } from "../../library/dummyData";
+import { useLoaderData } from "react-router-dom";
 
 function SinglePage() {
+  const post = useLoaderData();
+  console.log(post);
   return (
     <div className="singlePage">
       <div className="details">

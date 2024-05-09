@@ -17,7 +17,16 @@ export const getPost = async (req, res) => {
     const id = req.params.id;
     try {
         const post = await prisma.post.findUnique({
-            where: { id }
+            where: { id },
+            include: {
+                postDetail: true,
+                user: {
+                    select: {
+                        username: true,
+                        avatar: true,
+                    }
+                }
+            },
         });
         res.status(200).json(post)
 
@@ -44,7 +53,7 @@ export const addPost = async (req, res) => {
             }
         })
         res.status(200).json(newPost);
-        console.log(newPost)
+        //console.log(newPost)
         //res.status(201).json({ message: "New post has been created!" })
     } catch (err) {
         console.log(err)
