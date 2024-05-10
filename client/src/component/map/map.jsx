@@ -7,8 +7,12 @@ function Map({ items }) {
   return (
     <MapContainer
       className="map"
-      center={[52.4797, -1.90269]}
-      zoom={7}
+      center={
+        items.length === 1
+          ? [items[0].latitude, items[0].longitude]
+          : [39.045753, -76.641273]
+      }
+      zoom={10}
       scrollWheelZoom={false}
     >
       <TileLayer

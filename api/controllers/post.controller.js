@@ -1,11 +1,27 @@
 import prisma from "../lib/prisma.js";
-import bcrypt from "bcrypt"
 export const getPosts = async (req, res) => {
-    console.log("it works!!!")
+    const query = req.query;
+
     try {
 
-        const posts = await prisma.post.findMany()
-        res.status(200).json(posts)
+        const posts = await prisma.post.findMany({
+            where: {
+                city: query.city || undefined,
+                type: query.type || undefined,
+                property: query.property || undefined,
+                bedroom: parseInt(query.bedroom) || undefined,
+                price: {
+                    gte: parseInt(query.minPrice) || 0,
+                    lte: parseInt(query.maxPrice) || 100000,
+                }
+
+            }
+        })
+
+        setTimeout(() => {
+            res.status(200).json(posts)
+        }, 3000)
+
 
     } catch (err) {
         console.log(err)
@@ -31,7 +47,7 @@ export const getPost = async (req, res) => {
         res.status(200).json(post)
 
     } catch (err) {
-        console.log(err)
+        //console.log(err)
         req.status(500).json({ message: "Failed to get Post " })
     }
 }
