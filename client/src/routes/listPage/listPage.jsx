@@ -7,15 +7,13 @@ import { Suspense } from "react";
 
 function ListPage() {
   const data = useLoaderData();
-  function Loading() {
-    return <p>Loading...</p>;
-  }
+
   return (
     <div className="listPage">
       <div className="listContainer">
         <div className="wrapper">
           <Filter />
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<p>Loading...</p>}>
             <Await
               resolve={data.postResponse}
               errorElement={<p>Error loading posts!</p>}
@@ -30,7 +28,7 @@ function ListPage() {
         </div>
       </div>
       <div className="mapContainer">
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<p>Loading...</p>}>
           <Await
             resolve={data.postResponse}
             errorElement={<p>Error loading posts!</p>}

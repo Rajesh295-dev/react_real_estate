@@ -15,12 +15,14 @@ export const getPosts = async (req, res) => {
                     lte: parseInt(query.maxPrice) || 100000,
                 }
 
-            }
-        })
+            },
+        });
 
-        setTimeout(() => {
-            res.status(200).json(posts)
-        }, 3000)
+        // setTimeout(() => {
+        //     res.status(200).json(posts)
+        // }, 3000)
+
+        res.status(200).json(posts)
 
 
     } catch (err) {
@@ -44,7 +46,24 @@ export const getPost = async (req, res) => {
                 }
             },
         });
-        res.status(200).json(post)
+        const token = req.cookies?.token;
+
+        if (token) {
+            jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, payload) => {
+                if (!err) {
+                    const saved = await prisma.savedPost.findUnique({
+                        where: {
+                            userId_postId: {
+                                postId: id,
+                                userId: payload.id,
+                            },
+                        },
+                    });
+                    res.status(200).json({ ...post, isSaved: saved ? true : false });
+                }
+            });
+        }
+        res.status(200).json({ ...post, isSaved: false });
 
     } catch (err) {
         //console.log(err)
