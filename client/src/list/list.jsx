@@ -1,11 +1,15 @@
+import "./list.scss";
 import Card from "../component/card/card";
-import { listData } from "../library/dummyData";
-function List() {
+
+// By adding {posts && ...} before posts.map(...),
+// you're ensuring that posts is truthy (i.e., not undefined or null)
+// before attempting to map through it.
+// This will prevent the error when posts is undefined.
+
+function List({ posts }) {
   return (
     <div className="list">
-      {listData.map((item) => (
-        <Card key={item.id} item={item} />
-      ))}
+      {posts && posts.map((item) => <Card key={item.id} item={item} />)}
     </div>
   );
 }

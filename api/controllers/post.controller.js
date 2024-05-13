@@ -1,4 +1,5 @@
 import prisma from "../lib/prisma.js";
+import jwt from "jsonwebtoken";
 export const getPosts = async (req, res) => {
     const query = req.query;
 
@@ -27,12 +28,13 @@ export const getPosts = async (req, res) => {
 
     } catch (err) {
         console.log(err)
-        req.status(500).json({ message: "Failed to get Posts " })
+        res.status(500).json({ message: "Failed to get Posts " })
     }
 }
 
 export const getPost = async (req, res) => {
     const id = req.params.id;
+
     try {
         const post = await prisma.post.findUnique({
             where: { id },
@@ -66,8 +68,8 @@ export const getPost = async (req, res) => {
         res.status(200).json({ ...post, isSaved: false });
 
     } catch (err) {
-        //console.log(err)
-        req.status(500).json({ message: "Failed to get Post " })
+        console.log(err)
+        res.status(500).json({ message: "Failed to get Post " })
     }
 }
 
@@ -123,7 +125,7 @@ export const updatePost = async (req, res) => {
 
     } catch (err) {
         console.log(err)
-        req.status(500).json({ message: "Failed to update User " })
+        res.status(500).json({ message: "Failed to update User " })
     }
 }
 
@@ -151,6 +153,6 @@ export const deletePost = async (req, res) => {
         res.status(200).json({ message: "Post Deleted Successfully!" })
     } catch (err) {
         console.log(err)
-        req.status(500).json({ message: "Failed to get delete Post " })
+        res.status(500).json({ message: "Failed to get delete Post " })
     }
 }

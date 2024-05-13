@@ -1,5 +1,6 @@
 import "./register.scss";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import axios from "axios";
 import apiRequest from "../../library/apiRequest.js";
 import { useState } from "react";
 
@@ -12,13 +13,17 @@ import { useState } from "react";
 //  password:
 
 //   'josep101'
+
 function Register() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError("");
+
     const formData = new FormData(e.target);
     const username = formData.get("username");
     const email = formData.get("email");

@@ -8,6 +8,7 @@ import { useContext } from "react";
 
 function ProfilePage() {
   const { currentUser, updateUser } = useContext(AuthContext);
+  console.log(currentUser);
   const navigate = useNavigate();
 
   // useEffect(() => {
