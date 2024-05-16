@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 
-router.post("/", verifyToken, addMessage)
+router.post("/:chatId", verifyToken, addMessage)
 
 
 

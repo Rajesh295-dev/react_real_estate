@@ -2,26 +2,49 @@ import prisma from "../lib/prisma.js";
 
 export const getChats = async (req, res) => {
     const tokenUserId = req.userId;
+    console.log(tokenUserId)
 
 
     try {
+        const chats = await prisma.chat.findMany({
+            where: {
+                userIDs: {
+                    hasSome: [tokenUserId],
+                },
+            },
+        });
 
-        const chats = await prisma.chat.findMany();
-        where: {
-            userIDs: {
-                hasSome: [tokenUserId]
+        for (const chat of chats) {
+            const receiverId = chat.userIDs.find((id) => id !== tokenUserId);
+            console.log(receiverId)
+
+            if (receiverId) {
+                const receiver = await prisma.user.findUnique({
+                    where: {
+                        id: receiverId,
+                    },
+                    select: {
+                        id: true,
+                        username: true,
+                        avatar: true,
+                    },
+                });
+                chat.receiver = receiver;
             }
-        }
-        res.status(200).json(chats)
 
+
+        }
+
+        res.status(200).json(chats);
     } catch (err) {
-        console.log(err)
-        req.status(500).json({ message: "Failed to get Chats " })
+        console.log(err);
+        res.status(500).json({ message: "Failed to get chats!" });
     }
-}
+};
 
 export const getChat = async (req, res) => {
     const tokenUserId = req.userId;
+
     try {
         const chat = await prisma.chat.findUnique({
             where: {
@@ -29,13 +52,31 @@ export const getChat = async (req, res) => {
                 userIDs: {
                     hasSome: [tokenUserId],
                 }
+            },
+            include: {
+                messages: {
+                    orderBy: {
+                        createdAt: "asc"
+                    }
+                }
             }
         });
+
+        await prisma.chat.update({
+            where: {
+                id: req.params.id
+            },
+            data: {
+                seenBy: {
+                    push: [tokenUserId]
+                }
+            }
+        })
         res.status(200).json(chat)
 
     } catch (err) {
         console.log(err)
-        req.status(500).json({ message: "Failed to get Chat " })
+        res.status(500).json({ message: "Failed to get Chat " })
     }
 }
 
@@ -54,20 +95,32 @@ export const postChat = async (req, res) => {
 
     } catch (err) {
         console.log(err)
-        req.status(500).json({ message: "Failed to post Chats " })
+        res.status(500).json({ message: "Failed to post Chats " })
     }
 }
 
 export const readChat = async (req, res) => {
-
+    const tokenUserId = req.userId;
     try {
 
-        const users = await prisma.user.findMany();
-        res.status(200).json(users)
+        const chat = await prisma.chat.update({
+            where: {
+                id: req.params.id,
+                userIDs: {
+                    hasSome: [tokenUserId]
+                },
+            },
+            data: {
+                seenBy: {
+                    set: [tokenUserId]
+                }
+            }
+        });
+        res.status(200).json(chat)
 
     } catch (err) {
         console.log(err)
-        req.status(500).json({ message: "Failed to read Chats " })
+        res.status(500).json({ message: "Failed to read Chats " })
     }
 }
 
