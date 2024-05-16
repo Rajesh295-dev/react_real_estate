@@ -9,7 +9,7 @@ import apiRequest from "../../library/apiRequest";
 
 function SinglePage() {
   const post = useLoaderData();
-  console.log(post);
+
   const [saved, setSaved] = useState(post.isSaved);
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -135,12 +135,7 @@ function SinglePage() {
             <Map items={[post]} />
           </div>
           <div className="buttons">
-            <button className="chat">
-              <img src="/chat.png" />
-              Send a Message
-            </button>
             <button
-              className="save"
               onClick={handleSave}
               style={{
                 backgroundColor: saved ? "#fece51" : "white",
@@ -149,6 +144,13 @@ function SinglePage() {
               <img src="/save.png" />
               {saved ? "Place is Saved" : " Save the Place"}
             </button>
+
+            {
+              <button>
+                <img src="/chat.png" />
+                Send a Message
+              </button>
+            }
           </div>
         </div>
       </div>

@@ -8,9 +8,16 @@ export const singlePageLoader = async ({ request, params }) => {
 }
 
 export const listPageLoader = async ({ request, params }) => {
-    console.log(request)
+
     const query = request.url.split("?")[1];
     const postPromise = await apiRequest("/posts?" + query)
+    return defer({
+        postResponse: postPromise
+    })
+}
+
+export const profilePageLoader = async () => {
+    const postPromise = await apiRequest("/users/profilePosts")
     return defer({
         postResponse: postPromise
     })

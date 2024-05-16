@@ -64,8 +64,9 @@ export const getPost = async (req, res) => {
                     res.status(200).json({ ...post, isSaved: saved ? true : false });
                 }
             });
+        } else {
+            res.status(200).json({ ...post, isSaved: false });
         }
-        res.status(200).json({ ...post, isSaved: false });
 
     } catch (err) {
         console.log(err)

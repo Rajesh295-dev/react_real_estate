@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.js";
 import bcrypt from "bcrypt"
+
+
+
 export const getUsers = async (req, res) => {
     console.log("it works!!!")
     try {
@@ -84,9 +87,8 @@ export const deleteUser = async (req, res) => {
 
 export const savePost = async (req, res) => {
 
-    const PosstId = req.body.PosstId;
+    const postId = req.body.postId;
     const tokenUserId = req.userId;
-
 
     try {
 
@@ -101,12 +103,15 @@ export const savePost = async (req, res) => {
 
         if (savedPost) {
             await prisma.savedPost.delete({
+
                 where: {
-                    id: savePost.id,
+
+                    id: savedPost.id,
                 },
             });
             res.status(200).json({ message: "saved post removed Successfully!" })
         }
+
         else {
             await prisma.savedPost.create({
                 data: {
@@ -118,9 +123,32 @@ export const savePost = async (req, res) => {
         }
 
 
-        res.status(200).json({ message: "save post Successfully!" })
     } catch (err) {
         console.log(err)
-        req.status(500).json({ message: "Failed to get delete User " })
+        res.status(500).json({ message: "Failed to get delete User " })
+    }
+}
+
+
+export const profilePosts = async (req, res) => {
+
+    const tokenUserId = req.params.userId;
+
+    try {
+        const userPosts = await prisma.post.findMany({
+            where: { userId: tokenUserId }
+        });
+        const saved = await prisma.savedPost.findMany({
+            where: { userId: tokenUserId },
+            include: {
+                post: true,
+            },
+        });
+        const savedPosts = saved.map(item => item.post)
+        res.status(200).json({ userPosts, savedPosts })
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ message: "Failed to get Posts and saved Posts " })
     }
 }

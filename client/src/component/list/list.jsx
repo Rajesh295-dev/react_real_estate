@@ -1,5 +1,5 @@
 import "./list.scss";
-import Card from "../component/card/card";
+import Card from "../card/card";
 
 // By adding {posts && ...} before posts.map(...),
 // you're ensuring that posts is truthy (i.e., not undefined or null)
