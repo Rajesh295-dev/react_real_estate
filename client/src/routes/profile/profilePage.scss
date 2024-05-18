@@ -7,7 +7,11 @@
   @include md {
     flex-direction: column;
     overflow: scroll;
+    &::-webkit-scrollbar {
+      display: none; /* Hide the scrollbar in webkit browsers */
+    }
   }
+
   .details {
     flex: 3;
     overflow-y: scroll;
