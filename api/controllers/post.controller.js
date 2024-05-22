@@ -35,6 +35,11 @@ export const getPosts = async (req, res) => {
 export const getPost = async (req, res) => {
     const id = req.params.id;
 
+    // Validate the ObjectID
+    if (!ObjectId.isValid(id)) {
+        return res.status(400).json({ message: 'Invalid ID format' });
+    }
+
     try {
         const post = await prisma.post.findUnique({
             where: { id },
@@ -48,6 +53,9 @@ export const getPost = async (req, res) => {
                 }
             },
         });
+        if (!post) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
         const token = req.cookies?.token;
 
         if (token) {
@@ -73,6 +81,8 @@ export const getPost = async (req, res) => {
         res.status(500).json({ message: "Failed to get Post " })
     }
 }
+
+
 
 export const addPost = async (req, res) => {
     const body = req.body;

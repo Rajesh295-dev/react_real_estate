@@ -31,7 +31,7 @@ export const login = async (req, res) => {
     //db operations
 
     const { username, password } = req.body;
-    console.log(username, password)
+
     try {
         const user = await prisma.user.findUnique({
             where: { username }
@@ -45,7 +45,7 @@ export const login = async (req, res) => {
         // if there is user send cokkie token to the user
         //res.setHeader("Set-Cookie", "test=" + "myValue").json({ message: "success!!" }
         const age = 1000 * 60 * 60 * 24 * 7;
-        console.log(process.env.JWT_SECRET_KEY)
+
         const token = jwt.sign({
             id: user.id,
             isAdmin: false,
