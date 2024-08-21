@@ -6,10 +6,11 @@ import { AuthContext } from "../../context/AuthContext";
 
 export default function HomePage() {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
+  //console.log(currentUser);
   return (
     <div className="homePage">
       <div className="textContainer">
+        <div className="backgroundImg"></div>
         <div className="wrapper">
           <h1 className="title">Find Real Estate & Get Your Dream Place</h1>
           <p>

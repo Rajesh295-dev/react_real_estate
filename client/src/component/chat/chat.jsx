@@ -19,6 +19,7 @@ function Chat({ chats }) {
   const decrease = useNotificationStore((state) => state.decrease);
 
   const handleOpenChat = async (id, receiver) => {
+    //console.log(id, receiver);
     try {
       const res = await apiRequest("/chats/" + id);
       if (!res.data.seenBy.includes(currentUser.id)) {

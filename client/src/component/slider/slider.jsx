@@ -1,52 +1,71 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./slider.scss";
 
 function Slider({ images }) {
-  const [imageIndex, setImageIndex] = useState(null);
+  const [imageList, setImageList] = useState([]);
+  const [imageIndex, setImageIndex] = useState(0); // Initialize index to 0
+  const [isFullSliderVisible, setIsFullSliderVisible] = useState(false); // Track visibility of full slider
+
+  useEffect(() => {
+    if (typeof images === "string") {
+      // Duplicate the single image URL 4 times
+      setImageList([images, images, images, images]);
+    } else if (Array.isArray(images)) {
+      // Use the array of images directly
+      setImageList(images);
+    }
+  }, [images]);
+
+  const handleImageClick = (index) => {
+    setImageIndex(index);
+    setIsFullSliderVisible(true); // Show the full slider
+  };
+
+  const closeSlider = () => {
+    setIsFullSliderVisible(false); // Hide the full slider
+  };
+
   const changeSlide = (direction) => {
     if (direction === "left") {
-      if (imageIndex === 0) {
-        setImageIndex(images.length - 1);
-      } else {
-        setImageIndex(imageIndex - 1);
-      }
+      setImageIndex(imageIndex === 0 ? imageList.length - 1 : imageIndex - 1);
     } else {
-      if (imageIndex === images.length - 1) {
-        setImageIndex(0);
-      } else {
-        setImageIndex(imageIndex + 1);
-      }
+      setImageIndex(imageIndex === imageList.length - 1 ? 0 : imageIndex + 1);
     }
   };
+
   return (
     <div className="slider">
-      {imageIndex !== null && (
-        <div className="fullSlider">
+      {isFullSliderVisible && (
+        <div className="fullSlider" style={{ display: "flex" }}>
           <div className="arrow" onClick={() => changeSlide("left")}>
-            <img src="/arrow.png" />
+            <img src="/arrow.png" alt="Left Arrow" />
           </div>
           <div className="imgContainer">
-            <img src={images[imageIndex]} />
+            <img src={imageList[imageIndex]} alt={`Slide ${imageIndex + 1}`} />
           </div>
           <div className="arrow" onClick={() => changeSlide("right")}>
-            <img src="/arrow.png" className="right" />
+            <img src="/arrow.png" className="right" alt="Right Arrow" />
           </div>
-          <div className="close" onClick={() => setImageIndex(null)}>
+          <div className="close" onClick={closeSlider}>
             X
           </div>
         </div>
       )}
 
       <div className="bigImage">
-        <img src={images[0]} onClick={() => setImageIndex(0)} />
+        <img
+          src={imageList[0]}
+          alt="Main Image"
+          onClick={() => handleImageClick(0)}
+        />
       </div>
       <div className="smallImages">
-        {images.slice(1).map((image, index) => (
+        {imageList.slice(1).map((image, index) => (
           <img
             src={image}
             alt=""
             key={index}
-            onClick={() => setImageIndex(index + 1)}
+            onClick={() => handleImageClick(index + 1)}
           />
         ))}
       </div>

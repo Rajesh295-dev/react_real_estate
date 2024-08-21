@@ -4,9 +4,21 @@ import { Link } from "react-router-dom";
 import "./pin.scss";
 
 function Pin({ item }) {
+  // console.log(item.latitude, item.longitude, item.price);
+  // const [isHovered, setIsHovered] = useState(false);
   return (
-    <Marker position={[item.latitude, item.longitude]}>
-      <Popup>
+    <Marker
+      position={[item.latitude, item.longitude]}
+      // eventHandlers={{
+      //   mouseover: () => {
+      //     setIsHovered(true);
+      //   },
+      //   mouseout: () => {
+      //     setIsHovered(false);
+      //   },
+      // }}
+    >
+      <Popup className="popup">
         <div className="popupContainer">
           <img src={item.img} alt=""></img>
           <div className="textContainer">

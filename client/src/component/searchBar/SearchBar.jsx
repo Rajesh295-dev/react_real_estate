@@ -20,6 +20,23 @@ function SearchBar() {
   const handleChange = (e) => {
     setQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+  //this for all USA property api
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   const { type, city, minPrice, maxPrice } = query;
+  //   const apiUrl = `https://www.zillow.com/webservice/GetSearchResults.htm?zws-id=${API_KEY}&address=${city}&citystatezip=${city}&rentzestimate=true`;
+
+  //   fetch(apiUrl)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log("Property data:", data);
+  //       // Handle data retrieval here, e.g., update state with fetched data
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching data:", error);
+  //       // Handle error if needed
+  //     });
+  // };
 
   return (
     <div className="searchBar">

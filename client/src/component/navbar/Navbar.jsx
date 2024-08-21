@@ -18,7 +18,8 @@ function Navbar() {
           <img src="/logo.png" alt=""></img>
           <span> ReactEstate </span>
         </a>
-        <a>Home</a>
+        <Link to="/">Home</Link>
+        <Link to="/zillow">Property List</Link>
         <a>About</a>
         <a>Contact</a>
         <a>Agents</a>

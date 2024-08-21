@@ -1,22 +1,28 @@
 import "./singlePage.scss";
 import Slider from "../../component/slider/slider";
 import Map from "../../component/map/map";
-import { useLoaderData, useNavigate } from "react-router-dom";
+// import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../library/apiRequest";
 
 function SinglePage() {
-  const post = useLoaderData();
+  // const post = useLoaderData();
+  const location = useLocation();
+  const post = location.state?.post;
+  console.log(post);
 
-  const [saved, setSaved] = useState(post.isSaved);
+  // const [saved, setSaved] = useState(post.isSaved);
+  const [saved, setSaved] = useState(post?.isSaved || false); // Initialize with post.isSaved or false
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSave = async () => {
     if (!currentUser) {
       navigate("/login");
+      return;
     }
     // AFTER REACT 19 UPDATE TO USEOPTIMISTIK HOOK
     setSaved((prev) => !prev);
@@ -44,14 +50,14 @@ function SinglePage() {
                 <div className="price">$ {post.price}</div>
               </div>
               <div className="user">
-                <img src={post.user.avatar}></img>
-                <span>{post.user.username}</span>
+                <img src={post.user?.avatar}></img>
+                <span>{post.user?.username}</span>
               </div>
             </div>
             <div
               className="bottom"
               dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(post.postDetail.desc),
+                __html: DOMPurify.sanitize(post.desc),
               }}
             ></div>
           </div>
@@ -65,7 +71,7 @@ function SinglePage() {
               <img src="/utility.png"></img>
               <div className="featureText">
                 <span>Utilities</span>
-                {post.postDetail.utilities === "owner" ? (
+                {post.postDetail?.utilities === "owner" ? (
                   <p>Owner is responsible</p>
                 ) : (
                   <p>Tentant is responsible</p>
@@ -76,7 +82,7 @@ function SinglePage() {
               <img src="/pet.png"></img>
               <div className="featureText">
                 <span>Pet Policy</span>
-                {post.postDetail.pet === "allowed" ? (
+                {post.postDetail?.pet === "allowed" ? (
                   <p>Pets Allowed</p>
                 ) : (
                   <p>Pets not Allowed</p>
@@ -87,7 +93,7 @@ function SinglePage() {
               <img src="/fee.png"></img>
               <div className="featureText">
                 <span>Income Policy</span>
-                <p>{post.postDetail.income}</p>
+                <p>{post.postDetail?.income}</p>
               </div>
             </div>
           </div>
@@ -112,21 +118,21 @@ function SinglePage() {
               <img src="/school.png"></img>
               <div className="featureText">
                 <span>School</span>
-                <p>{post.postDetail.school}m away</p>
+                <p>{post.postDetail?.school}m away</p>
               </div>
             </div>
             <div className="feature">
               <img src="/pet.png"></img>
               <div className="featureText">
                 <span>Bus Stop</span>
-                <p>{post.postDetail.bus}m away</p>
+                <p>{post.postDetail?.bus}m away</p>
               </div>
             </div>
             <div className="feature">
               <img src="/fee.png"></img>
               <div className="featureText">
                 <span>Restaurant</span>
-                <p>{post.postDetail.restaurant}m away</p>
+                <p>{post.postDetail?.restaurant}m away</p>
               </div>
             </div>
           </div>

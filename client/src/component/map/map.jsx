@@ -4,15 +4,13 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import Pin from "../pin/pin";
 
 function Map({ items }) {
+  const defaultCenter = [34.018307, -118.504581]; // Center of the USA
+  const defaultZoom = 18; // Zoom level to cover the entire USA
   return (
     <MapContainer
       className="map"
-      center={
-        items.length === 1
-          ? [items[0].latitude, items[0].longitude]
-          : [39.045753, -76.641273]
-      }
-      zoom={10}
+      center={defaultCenter}
+      zoom={defaultZoom}
       scrollWheelZoom={false}
     >
       <TileLayer

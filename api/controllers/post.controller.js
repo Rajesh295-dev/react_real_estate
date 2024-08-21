@@ -36,9 +36,9 @@ export const getPost = async (req, res) => {
     const id = req.params.id;
 
     // Validate the ObjectID
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).json({ message: 'Invalid ID format' });
-    }
+    // if (!ObjectId.isValid(id)) {
+    //     return res.status(400).json({ message: 'Invalid ID format' });
+    // }
 
     try {
         const post = await prisma.post.findUnique({

@@ -12,12 +12,16 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "^5.13.0",
+    "async-sema": "^3.1.1",
+    "axios": "^1.7.3",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dompurify": "^3.1.2",
     "express": "^4.19.2",
+    "jsdom": "^24.1.1",
     "jsonwebtoken": "^9.0.2",
-    "prisma": "^5.13.0"
+    "prisma": "^5.13.0",
+    "puppeteer": "^23.0.1"
   }
 }
