@@ -17,10 +17,12 @@
     {
       "src": "/api/(.*)",
       "dest": "/api/$1"
-    },
+    }
+  ],
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/client/$1"
+      "source": "/(.*)",
+      "destination": "/client/build/index.html"
     }
   ]
 }
