@@ -20,6 +20,14 @@ app.use(cookieParser())
 // this is if console ninja doesnot work
 // export PATH="$PATH:/Users/rajeshgautam/.console-ninja/.bin"
 
+app.use(cors(
+    {
+        origin: ["https://reactrealestate.vercel.app"],
+        methods: ["POST, GET, PUT"],
+        credentials: true
+    }
+));
+
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
