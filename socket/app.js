@@ -1,10 +1,19 @@
 import { Server } from "socket.io"
+import dotenv from "dotenv";
+
+// Load environment variables from .env
+dotenv.config();
+
+// console.log("Starting Socket.IO server...");
 
 const io = new Server({
     cors: {
-        origin: "http://localhost:5173"
+        origin: process.env.CORS_ORIGIN,
     },
 });
+
+// Log the CORS origin for debugging
+// console.log("CORS Origin:", process.env.CORS_ORIGIN);
 
 let onlineUser = [];
 const addUser = (userId, socketId) => {
