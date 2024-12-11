@@ -30,7 +30,10 @@ app.use("/api/test", testRoute);
 
 app.use("/api/zillowData", zillowRoute);
 
-
+// Health Check Route
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'OK' });
+});
 
 
 app.listen(8800, () => {
