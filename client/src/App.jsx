@@ -6,14 +6,14 @@ import SinglePage from "./routes/singlePage/singlePage";
 import ProfilePage from "./routes/profile/profilePage";
 import Register from "./routes/register/register";
 import Login from "./routes/loginPage/login";
-import ZillowPage from "./routes/zillowPage/zillowPage.jsx";
+//import ZillowPage from "./routes/zillowPage/zillowPage.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
 import NewPostPage from "./routes/newPostPage/newPostPage";
 
 import {
-  zillowPageLoader,
+  // zillowPageLoader,
   listPageLoader,
   profilePageLoader,
   singlePageLoader,
@@ -48,11 +48,11 @@ function App() {
           path: "/login",
           element: <Login />,
         },
-        {
-          path: "/zillow",
-          element: <ZillowPage />,
-          loader: zillowPageLoader,
-        },
+        //   {
+        //     path: "/zillow",
+        //     element: <ZillowPage />,
+        //     loader: zillowPageLoader,
+        //   },
       ],
     },
     {

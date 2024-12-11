@@ -2,7 +2,7 @@ import prisma from "../lib/prisma.js";
 
 export const getChats = async (req, res) => {
     const tokenUserId = req.userId;
-    console.log(tokenUserId)
+    // console.log(tokenUserId)
 
 
     try {
@@ -16,7 +16,7 @@ export const getChats = async (req, res) => {
 
         for (const chat of chats) {
             const receiverId = chat.userIDs.find((id) => id !== tokenUserId);
-            console.log(receiverId)
+            // console.log(receiverId)
 
             if (receiverId) {
                 const receiver = await prisma.user.findUnique({

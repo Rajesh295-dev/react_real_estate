@@ -18,10 +18,10 @@ function Navbar() {
           <img src="/logo.png" alt=""></img>
           <span> ReactEstate </span>
         </a>
-        <Link to="/">Home</Link>
-        <Link to="/zillow">Property List</Link>
+        <Link to="">Home</Link>
+        {/* <Link to="/zillow">RapidAPI</Link> */}
+        <Link to="/list">PropertyList</Link>
         <a>About</a>
-        <a>Contact</a>
         <a>Agents</a>
       </div>
       <div className="right">
@@ -37,7 +37,7 @@ function Navbar() {
         ) : (
           <>
             <a href="/login">Sign In</a>
-            <a href="/register" className="register">
+            <a href="/register" className="signUp">
               Sing Up
             </a>
           </>
@@ -51,12 +51,12 @@ function Navbar() {
           />
         </div>
         <div className={open ? "menu active " : "menu"}>
-          <a>Home</a>
-          <a>About</a>
-          <a>Contact</a>
-          <a>Agents</a>
-          <a>Sign In</a>
-          <a>Sign Up</a>
+          <a href="">Home</a>
+          <a href="">About</a>
+          <a href="">Contact</a>
+          <a href="">Agents</a>
+          <a href="/login">Sign In</a>
+          <a href="/register">Sign Up</a>
         </div>
       </div>
     </nav>

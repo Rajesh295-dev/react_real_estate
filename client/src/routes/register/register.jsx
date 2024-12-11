@@ -49,7 +49,7 @@ function Register() {
   return (
     <div className="register">
       <div className="formContainer">
-        <form on onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <h1>Create an Account</h1>
           <input name="username" type="text" placeholder="Username" />
           <input name="email" type="text" placeholder="Email" />

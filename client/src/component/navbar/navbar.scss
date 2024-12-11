@@ -105,9 +105,11 @@
       }
     }
 
-    .register {
+    .signUp {
       background-color: #fece51;
+      padding: 9px 16px;
     }
+
     .menuIcon {
       display: none;
       z-index: 999;
@@ -124,6 +126,7 @@
 
     .menu {
       position: absolute;
+      cursor: pointer;
       top: 0;
       right: -50%;
       background-color: black;

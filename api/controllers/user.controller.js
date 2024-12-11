@@ -4,7 +4,7 @@ import bcrypt from "bcrypt"
 
 
 export const getUsers = async (req, res) => {
-    console.log("it works!!!")
+    // console.log("it works!!!")
     try {
 
         const users = await prisma.user.findMany();
@@ -124,7 +124,7 @@ export const savePost = async (req, res) => {
 
 
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         res.status(500).json({ message: "Failed to get delete User " })
     }
 }

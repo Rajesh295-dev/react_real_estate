@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { useState } from "react";
 import "./searchBar.scss";
 
 const types = ["buy", "rent"];
@@ -17,27 +15,6 @@ function SearchBar() {
     setQuery((prev) => ({ ...prev, type: val }));
   };
 
-  const handleChange = (e) => {
-    setQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-  //this for all USA property api
-  // const handleSearch = (e) => {
-  //   e.preventDefault();
-  //   const { type, city, minPrice, maxPrice } = query;
-  //   const apiUrl = `https://www.zillow.com/webservice/GetSearchResults.htm?zws-id=${API_KEY}&address=${city}&citystatezip=${city}&rentzestimate=true`;
-
-  //   fetch(apiUrl)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("Property data:", data);
-  //       // Handle data retrieval here, e.g., update state with fetched data
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data:", error);
-  //       // Handle error if needed
-  //     });
-  // };
-
   return (
     <div className="searchBar">
       <div className="type">
@@ -51,38 +28,25 @@ function SearchBar() {
           </button>
         ))}
       </div>
-
       <form>
-        <input
-          type="text"
-          name="city"
-          placeholder="Towson"
-          onChange={handleChange}
-        ></input>
+        <input type="text" name="location" placeholder="City Location" />
         <input
           type="number"
           name="minPrice"
           min={0}
-          max={10000000}
+          max={100000}
           placeholder="Min Price"
-          onChange={handleChange}
-        ></input>
+        />
         <input
           type="number"
           name="maxPrice"
           min={0}
           max={10000000}
-          placeholder="Max price"
-          onChange={handleChange}
-        ></input>
-
-        <Link
-          to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice${query.maxPrice}`}
-        >
-          <button>
-            <img src="./search.png" alt=""></img>
-          </button>
-        </Link>
+          placeholder="Max Price"
+        />
+        <button>
+          <img src="/search.png" alt="" />
+        </button>
       </form>
     </div>
   );

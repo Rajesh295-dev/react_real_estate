@@ -2,21 +2,21 @@ import { defer } from "react-router-dom";
 import apiRequest from "./apiRequest"
 
 //adding zillowpage loader
-export const zillowPageLoader = async () => {
-    try {
-        const response = await apiRequest('/zillowData');
-        //console.log('API response data:', response.data);
-        //console.log('API response:', JSON.stringify(response.data, null, 2)); // Log the API response
+// export const zillowPageLoader = async () => {
+//     try {
+//         const response = await apiRequest('/zillowData');
+//         //console.log('API response data:', response.data);
+//         //console.log('API response:', JSON.stringify(response.data, null, 2)); // Log the API response
 
-        const listings = response.data.data || []; // if property is an array
-        //console.log('Listings:', listings);
+//         const listings = response.data.data || []; // if property is an array
+//         //console.log('Listings:', listings);
 
-        return Array.isArray(listings) ? listings : [];
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        throw error;
-    }
-};
+//         return Array.isArray(listings) ? listings : [];
+//     } catch (error) {
+//         console.error('Error fetching data:', error);
+//         throw error;
+//     }
+// };
 
 
 
@@ -42,3 +42,6 @@ export const profilePageLoader = async () => {
         chatResponse: chatPromise,
     })
 }
+
+
+

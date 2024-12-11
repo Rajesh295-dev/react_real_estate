@@ -9,6 +9,9 @@ import List from "../../component/list/list";
 
 function ProfilePage() {
   const data = useLoaderData();
+  // console.log("chatResponse data:", data.chatResponse);
+
+  // console.log("data from profile", data);
 
   const { currentUser, updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -59,12 +62,25 @@ function ProfilePage() {
             </Link>
           </div>
 
-          <Suspense fallback={<p>Loading....</p>}>
+          <Suspense fallback={<p>Loading your posts...</p>}>
             <Await
               resolve={data.postResponse}
               errorElement={<p>Error loading posts!</p>}
             >
-              {(postResponse) => <List posts={postResponse.data.userPosts} />}
+              {(postResponse) => {
+                // Ensure postResponse.data.userPosts exists and is an array
+                const userPosts = Array.isArray(postResponse.data.userPosts)
+                  ? postResponse.data.userPosts.filter(
+                      (post) => post.userId === currentUser.id
+                    )
+                  : [];
+
+                if (!userPosts.length) {
+                  return <p>You have not created any posts yet.</p>;
+                }
+
+                return <List posts={userPosts} />;
+              }}
             </Await>
           </Suspense>
 
@@ -72,6 +88,7 @@ function ProfilePage() {
             <h1>Saved List</h1>
             <button>Update Profile</button>
           </div>
+
           <Suspense fallback={<p>Loading....</p>}>
             <Await
               resolve={data.postResponse}

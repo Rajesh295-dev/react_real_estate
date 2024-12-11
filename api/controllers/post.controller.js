@@ -104,7 +104,7 @@ export const addPost = async (req, res) => {
         //console.log(newPost)
         //res.status(201).json({ message: "New post has been created!" })
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         res.status(500).json({ message: "Something Wrong!" })
     }
 }
@@ -135,7 +135,7 @@ export const updatePost = async (req, res) => {
         res.status(200).json(rest)
 
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         res.status(500).json({ message: "Failed to update User " })
     }
 }
@@ -163,7 +163,7 @@ export const deletePost = async (req, res) => {
         })
         res.status(200).json({ message: "Post Deleted Successfully!" })
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         res.status(500).json({ message: "Failed to get delete Post " })
     }
 }

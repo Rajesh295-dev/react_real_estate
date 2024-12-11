@@ -26,7 +26,7 @@ const getUser = (userId) => {
 }
 
 io.on("connection", (socket) => {
-    console.log(`New connection: ${socket.id}`);
+    // console.log(`New connection: ${socket.id}`);
     socket.on("newUser", (userId) => {
         addUser(userId, socket.id)
         //console.log(`User added: ${userId} with socket ID: ${socket.id}`);
