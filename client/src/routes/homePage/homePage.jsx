@@ -47,6 +47,7 @@ import { useContext } from "react";
 import SearchBar from "../../component/searchBar/SearchBar";
 import "./homePage.scss";
 import { AuthContext } from "../../context/AuthContext";
+import Footer from "../../component/footer/Footer";
 
 export default function HomePage() {
   const { currentUser } = useContext(AuthContext);
@@ -85,12 +86,6 @@ export default function HomePage() {
           </div>
         </div>
         <div className="content">
-          {/* <h2>Additional Content Section</h2>
-          <p>
-            This section can be used to add more details about your services,
-            features, or any other relevant information.
-          </p> */}
-
           <h2>Why Choose Us?</h2>
           <div className="features">
             <div className="feature">
@@ -115,7 +110,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="testimonialsSection">
+        {/* <div className="testimonialsSection">
           <h2>What Our Clients Say</h2>
           <div className="testimonials">
             <div className="testimonial">
@@ -133,7 +128,8 @@ export default function HomePage() {
               <h4>- Sarah Thompson</h4>
             </div>
           </div>
-        </div>
+        </div> */}
+        <Footer />
       </div>
     </div>
   );

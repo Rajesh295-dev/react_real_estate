@@ -1,6 +1,7 @@
 import { Outlet, Navigate } from "react-router";
 import "./layout.scss";
 import Navbar from "../../component/navbar/Navbar";
+import Footer from "../../component/footer/Footer";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -14,6 +15,9 @@ function Layout() {
       <div className="content">
         {" "}
         <Outlet />
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
