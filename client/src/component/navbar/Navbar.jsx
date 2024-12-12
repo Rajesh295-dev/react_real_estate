@@ -15,8 +15,8 @@ function Navbar() {
     <nav className="nav">
       <div className="left">
         <a href="" className="logo">
-          <img src="/logo.png" alt=""></img>
           <span> ReactEstate </span>
+          <img src="/logo1.jpg" alt=""></img>
         </a>
         <Link to="">Home</Link>
         {/* <Link to="/zillow">RapidAPI</Link> */}

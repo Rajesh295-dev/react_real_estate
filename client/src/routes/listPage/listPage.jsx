@@ -74,6 +74,7 @@ function ListPage() {
       <div className="listContainer">
         <div className="wrapper">
           <Filter />
+
           <Suspense fallback={<p>Loading posts...</p>}>
             <Await
               resolve={data.postResponse}
