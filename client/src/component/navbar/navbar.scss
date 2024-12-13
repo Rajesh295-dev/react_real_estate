@@ -168,7 +168,7 @@
 .nav {
   position: sticky;
   top: 0; // Sticks to the top of the viewport
-  z-index: 999; // Ensures it stays above other elements
+  // z-index: 999; // Ensures it stays above other elements
   height: 100px;
   display: flex;
   justify-content: space-between;
