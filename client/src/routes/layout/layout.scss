@@ -11,6 +11,11 @@
   display: flex;
   flex-direction: column;
 
+  .navbar {
+    position: relative;
+    z-index: 999;
+  }
+
   @include lg {
     // background-color: rgb(228, 214, 209);
     max-width: 1280px;

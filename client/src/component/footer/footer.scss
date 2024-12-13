@@ -1,10 +1,12 @@
 @import "../../responsive.scss";
 
 .footer {
+  // height: 100vh;
+  position: relative;
   background-color: #333; // Dark background
   color: #fff; // White text
   padding: 40px 20px 20px;
-  margin-bottom: 20px;
+
   display: flex;
   flex-direction: column;
 
@@ -15,6 +17,9 @@
     flex-wrap: wrap;
 
     .footerSection {
+      flex-direction: row;
+      align-items: center;
+      text-align: center;
       flex: 1;
       min-width: 200px;
       margin-bottom: 20px;

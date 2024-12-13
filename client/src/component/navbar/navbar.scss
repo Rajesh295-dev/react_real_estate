@@ -1,12 +1,182 @@
-@import "../../responsive.scss";
+// @import "../../responsive.scss";
 
+// .nav {
+//   // transform: translateY(0px);
+//   // z-index: 999;
+//   position: sticky;
+//   height: 100px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding-left: 30px;
+//   padding-right: 10px;
+
+//   a {
+//     transition: all 0.4s ease;
+//     &:hover {
+//       scale: 1.05;
+//     }
+
+//     @include sm {
+//       display: none;
+//     }
+//   }
+
+//   .left {
+//     flex: 3;
+//     display: flex;
+//     align-items: center;
+//     cursor: pointer;
+//     gap: 50px;
+
+//     .logo {
+//       font-weight: bold;
+//       font-size: 20px;
+//       display: flex;
+//       align-items: center;
+//     }
+
+//     img {
+//       height: 30px;
+//       width: 50px;
+//     }
+
+//     span {
+//       @include md {
+//         display: none;
+//       }
+
+//       @include sm {
+//         display: initial;
+//       }
+//     }
+//   }
+
+//   .right {
+//     flex: 2;
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-end;
+//     // background-color: #fcf5f3;
+//     // background-color: #fcf5;
+//     height: 100%;
+
+//     @include md {
+//       background-color: transparent;
+//     }
+
+//     a {
+//       padding: 12px 24px;
+//       margin: 20px;
+//     }
+
+//     .user {
+//       display: flex;
+//       align-items: center;
+//       font-weight: bold;
+//       img {
+//         width: 40px;
+//         height: 40px;
+//         border-radius: 50%;
+//         object-fit: cover;
+//         margin-right: 20px;
+//       }
+
+//       span {
+//         @include sm {
+//           display: none;
+//         }
+//       }
+//       .profile {
+//         padding: 12px;
+//         background-color: #fece51;
+//         cursor: pointer;
+//         border: none;
+//         position: relative;
+
+//         .notification {
+//           position: absolute;
+//           top: -8px;
+//           right: -8px;
+//           background-color: red;
+//           color: white;
+//           border-radius: 50%;
+//           width: 26px;
+//           height: 26px;
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+//         }
+//       }
+//     }
+
+//     .signUp {
+//       background-color: #fece51;
+//       padding: 9px 16px;
+//     }
+
+//     .menuIcon {
+//       display: none;
+//       z-index: 999;
+
+//       img {
+//         width: 36px;
+//         height: 36px;
+//         cursor: pointer;
+//       }
+//       @include sm {
+//         display: inline;
+//       }
+//     }
+
+//     .menu {
+//       position: absolute;
+//       cursor: pointer;
+//       top: 0;
+//       right: -50%;
+//       background-color: black;
+//       color: white;
+//       height: 100vh;
+//       width: 50%;
+//       transition: all 1s ease;
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       justify-content: center;
+//       font-size: 24px;
+//       @include md {
+//         right: -50%;
+//       }
+//       @include lg {
+//         right: -50%;
+//       }
+
+//       &.active {
+//         right: 0;
+//       }
+
+//       @include sm {
+//         a {
+//           display: initial;
+//         }
+//       }
+//     }
+//   }
+// }
+
+@import "../../responsive.scss";
 .nav {
+  position: sticky;
+  top: 0; // Sticks to the top of the viewport
+  z-index: 999; // Ensures it stays above other elements
   height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 30px;
   padding-right: 10px;
+  background-color: #fff; // Ensures a background color to avoid transparency issues
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Optional: Adds a shadow for better visibility
 
   a {
     transition: all 0.4s ease;
@@ -34,8 +204,8 @@
     }
 
     img {
-      height: 50px;
-      width: 60px;
+      height: 30px;
+      width: 50px;
     }
 
     span {
@@ -54,8 +224,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    // background-color: #fcf5f3;
-    // background-color: #fcf5;
     height: 100%;
 
     @include md {
@@ -71,6 +239,7 @@
       display: flex;
       align-items: center;
       font-weight: bold;
+
       img {
         width: 40px;
         height: 40px;
@@ -84,6 +253,7 @@
           display: none;
         }
       }
+
       .profile {
         padding: 12px;
         background-color: #fece51;
@@ -121,6 +291,7 @@
         height: 36px;
         cursor: pointer;
       }
+
       @include sm {
         display: inline;
       }
@@ -141,9 +312,11 @@
       align-items: center;
       justify-content: center;
       font-size: 24px;
+
       @include md {
         right: -50%;
       }
+
       @include lg {
         right: -50%;
       }
