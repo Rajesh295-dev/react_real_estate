@@ -47,9 +47,9 @@ app.get('/api/health', (req, res) => {
 });
 
 
-// app.listen(PORT, () => {
-//     console.log(`Backend is running on port ${PORT}`);
-// });
+app.listen(PORT, () => {
+    console.log(`Backend is running on port ${PORT}`);
+});
 
 // app.listen(8800, () => {
 //     console.log("Server is ready to roll!")
