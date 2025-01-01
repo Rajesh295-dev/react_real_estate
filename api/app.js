@@ -11,6 +11,9 @@ import messageRoute from "./routes/message.route.js"
 // adding zillow page route
 import zillowRoute from "./routes/zillow.route.js"
 
+const PORT = process.env.REACT_APP_PORT || 8800
+// console.log("this is the port for backend 🛺", PORT)
+
 const app = express();
 
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
@@ -44,6 +47,10 @@ app.get('/api/health', (req, res) => {
 });
 
 
-app.listen(8800, () => {
-    console.log("Server is ready to roll!")
-})
+app.listen(PORT, () => {
+    console.log(`Backend is running on port ${PORT}`);
+});
+
+// app.listen(8800, () => {
+//     console.log("Server is ready to roll!")
+// })
