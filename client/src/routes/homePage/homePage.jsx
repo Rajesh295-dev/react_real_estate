@@ -3,42 +3,30 @@ import SearchBar from "../../component/searchBar/SearchBar";
 import "./homePage.scss";
 import { AuthContext } from "../../context/AuthContext";
 import Footer from "../../component/footer/Footer";
+import ReactPlayer from "react-player";
+// import video from "../../../public/video1.mp4";
 
 export default function HomePage() {
   const { currentUser } = useContext(AuthContext);
-  useEffect(() => {
-    const video = document.querySelector(".backgroundVideo");
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        // Screen is wide, play the video
-        if (video)
-          video.play().catch((error) => console.error("Play error:", error));
-      } else {
-        // Screen is narrow, pause the video
-        if (video) video.pause();
-      }
-    };
-
-    // Initial check
-    handleResize();
-
-    // Add event listener for resize
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <div className="homePage">
       <div className="wrapper">
         <div className="videoContainer">
-          <video autoPlay muted loop className="backgroundVideo">
-            <source src="./video1.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <ReactPlayer
+            url="./video1.mp4"
+            type="video/mp4"
+            className="backgroundVideo"
+            controls={true}
+            playing={true}
+            height="100vh"
+            width="100%"
+            playsinline
+            loop={true}
+            volume={null}
+            muted={true}
+          />
+
           <div className="textOverlay">
             <h1 className="title">Discover Your Dream Home Today</h1>
             <p>
@@ -67,6 +55,16 @@ export default function HomePage() {
 
         <div className="content">
           <h2>Why Choose Us?</h2>
+          {/* <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/dQ6RNltrXro?si=jIFIoQq0qDWeBW8M"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe> */}
           <div className="features">
             <div className="feature">
               <img src="/feature3.webp" alt="Feature 1" />
