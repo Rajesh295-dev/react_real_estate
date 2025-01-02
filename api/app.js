@@ -16,7 +16,7 @@ import zillowRoute from "./routes/zillow.route.js"
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+// app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 //console.log(process.env.CLIENT_URL)
 app.use(express.json())
 app.use(cookieParser())
@@ -24,22 +24,14 @@ app.use(cookieParser())
 // this is if console ninja doesnot work
 // export PATH="$PATH:/Users/rajeshgautam/.console-ninja/.bin"
 
-// app.use(cors(
-//     {
-//         origin: ["https://reactrealestate.vercel.app"],
-//         methods: ["POST, GET, PUT", "DELETE"],
-//         credentials: true
-//     }
-// ));
 
 app.use(
     cors({
-        origin: process.env.CLIENT_URL || "http://localhost:3000", // Fallback to localhost for development
+        origin: process.env.CLIENT_URL,
         methods: ["POST", "GET", "PUT", "DELETE"],
         credentials: true,
     })
 );
-
 
 
 app.use("/api/auth", authRoute);
@@ -61,15 +53,16 @@ app.get('/api/health', (req, res) => {
     res.status(200).json({ status: 'OK' });
 });
 
-
-// app.listen(PORT, () => {
-//     console.log(`Backend is running on port ${PORT}`);
-// });
+const PORT = 8800;
+app.listen(PORT, () => {
+    console.log(`Backend is running on port ${PORT}`);
+});
 
 
 // app.listen(8800, () => {
 //     console.log("Server is ready to roll!")
 // })
+
 // Export the app for Vercel
 export default app;
 
