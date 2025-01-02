@@ -51,6 +51,11 @@ app.use("/api/test", testRoute);
 
 app.use("/api/zillowData", zillowRoute);
 
+app.get("/", (req, res) => {
+    res.status(200).send("Welcome to the React Real Estate API!");
+});
+
+
 // Health Check Route
 app.get('/api/health', (req, res) => {
     res.status(200).json({ status: 'OK' });
