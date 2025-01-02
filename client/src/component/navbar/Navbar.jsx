@@ -10,6 +10,10 @@ function Navbar() {
   const fetch = useNotificationStore((state) => state.fetch);
   const number = useNotificationStore((state) => state.number);
   if (currentUser) fetch();
+  // Function to close the menu
+  const handleCloseMenu = () => {
+    setOpen(false);
+  };
   // const user = true;
   return (
     <nav className="nav">
@@ -50,12 +54,30 @@ function Navbar() {
             onClick={() => setOpen((prev) => !prev)}
           />
         </div>
-        <div className={open ? "menu active " : "menu"}>
+
+        {/* <div className={open ? "menu active " : "menu"}>
           <Link to="">Home</Link>
           <a href="">About</a>
           <Link to="/list">PropertyList</Link>
-          {/* <a to="/list">PropertyList</a> */}
+          <a to="/list">PropertyList</a>
           <a href="">Agents</a>
+          <a href="/login">Sign In</a>
+          <a href="/register">Sign Up</a>
+        </div> */}
+
+        <div className={open ? "menu active " : "menu"}>
+          <Link to="" onClick={handleCloseMenu}>
+            Home
+          </Link>
+          <Link href="" onClick={handleCloseMenu}>
+            About
+          </Link>
+          <Link to="/list" onClick={handleCloseMenu}>
+            PropertyList
+          </Link>
+          <a href="" onClick={handleCloseMenu}>
+            Agents
+          </a>
           <a href="/login">Sign In</a>
           <a href="/register">Sign Up</a>
         </div>
