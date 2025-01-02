@@ -124,6 +124,10 @@ import { Suspense } from "react";
 function ListPage() {
   const data = useLoaderData();
 
+  console.log("Post Response:", data?.postResponse);
+  console.log("Is data array:", Array.isArray(data?.postResponse?.data));
+  console.log("Data length:", data?.postResponse?.data?.length);
+
   return (
     <div className="listPage">
       <div className="listContainer">
