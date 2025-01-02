@@ -62,9 +62,9 @@ app.get('/api/health', (req, res) => {
 // });
 
 
-app.listen(8800, () => {
-    console.log("Server is ready to roll!")
-})
+// app.listen(8800, () => {
+//     console.log("Server is ready to roll!")
+// })
 // Export the app for Vercel
 export default app;
 
