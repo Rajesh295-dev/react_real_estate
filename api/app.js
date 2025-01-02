@@ -17,6 +17,7 @@ import zillowRoute from "./routes/zillow.route.js"
 const app = express();
 
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+console.log(process.env.CLIENT_URL)
 app.use(express.json())
 app.use(cookieParser())
 
@@ -47,10 +48,15 @@ app.get('/api/health', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-    console.log(`Backend is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Backend is running on port ${PORT}`);
+// });
 
 // app.listen(8800, () => {
 //     console.log("Server is ready to roll!")
 // })
+
+// Export the app for Vercel
+export default app;
+
+
