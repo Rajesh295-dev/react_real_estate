@@ -1,7 +1,19 @@
+@import "../../responsive.scss";
+
 .filter {
+  // background-color: brown;
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 10px;
+
+  // @include md {
+  //   margin-left: 5px;
+  // }
+
+  @include sm {
+  }
+
   h1 {
     font-size: 24px;
     font-weight: 300;
@@ -30,15 +42,29 @@
   }
   .bottom {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
+    // @include md {
+    //   .item {
+    //     flex: 1 1 calc(33.33% - 20px); /* Three items per row with space for gap */
+    //     min-width: 150px; /* Ensure a minimum width for items */
+    //   }
+    // }
+    @include sm {
+      .item {
+        flex: 2 2 2 100%; /* One item per row on small screens */
+      }
+    }
 
     .button {
       width: 100px;
       padding: 10px;
       border: none;
       cursor: pointer;
-      background-color: #fece51;
+      // background-color: #fece51;
+      background-color: mediumseagreen;
+      // background-color: forestgreen;
       img {
         width: 24px;
         height: 24px;

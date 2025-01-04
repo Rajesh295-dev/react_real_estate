@@ -55,7 +55,7 @@ function Filter() {
           </select>
         </div>
         <div className="item">
-          <label htmlFor="propert">Property</label>
+          <label htmlFor="property">Property</label>
           <select
             name="property"
             id="property"

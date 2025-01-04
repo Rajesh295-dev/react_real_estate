@@ -1,6 +1,8 @@
 @import "../../responsive.scss";
 
 .profilePage {
+  // background-color: blueviolet;
+  padding-top: 15px;
   display: flex;
   height: 100%;
 
@@ -22,7 +24,7 @@
       height: max-content;
     }
     .wrapper {
-      padding-right: 50px;
+      // padding-right: 50px;
       display: flex;
       flex-direction: column;
       gap: 50px;
@@ -39,7 +41,8 @@
         }
         button {
           padding: 12px 24px;
-          background-color: #fece51;
+          // background-color: #fece51;
+          background-color: mediumseagreen;
           cursor: pointer;
           border: none;
         }
@@ -64,7 +67,7 @@
 
         button {
           width: 100px;
-          background-color: teal;
+          background-color: mediumseagreen;
           border: none;
           color: white;
           padding: 10px 20px;

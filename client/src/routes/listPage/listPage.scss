@@ -1,3 +1,4 @@
+@import "../../responsive.scss";
 .listPage {
   display: flex;
   height: 100%;
@@ -5,9 +6,17 @@
   .listContainer {
     flex: 3;
     height: 100%;
+    width: 100%;
+    padding: 20px;
+    // background-color: cadetblue;
+    @include sm {
+      padding: 10px;
+    }
     .wrapper {
+      // background-color: aquamarine;
       height: 100%;
-      padding-right: 50px;
+      width: 100%;
+      // padding-right: 50px;
       display: flex;
       flex-direction: column;
       gap: 50px;
