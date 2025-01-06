@@ -1,14 +1,16 @@
 @import "../../responsive.scss";
 
 .footer {
-  height: 50vh;
+  height: 100%;
   position: relative;
   background-color: #333; // Dark background
   color: #fff; // White text
   padding: 40px 20px 20px;
-
   display: flex;
   flex-direction: column;
+  @include sm {
+    margin-bottom: 10px;
+  }
 
   .footerContainer {
     display: flex;
@@ -73,10 +75,8 @@
   // Responsive adjustments
   @include sm {
     .footerContainer {
-      flex-direction: row;
       align-items: center;
       text-align: center;
-      overflow-y: auto;
 
       .footerSection {
         margin-bottom: 30px;
@@ -85,6 +85,7 @@
 
     .footerBottom {
       font-size: 12px;
+      margin-bottom: 30px;
     }
   }
 }

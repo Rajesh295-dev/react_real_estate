@@ -1,65 +1,6 @@
-// import "./listPage.scss";
-// import Filter from "../../component/filter/filter";
-// import Card from "../../component/card/card";
-// import Map from "../../component/map/map";
-// import { Await, useLoaderData } from "react-router-dom";
-// import { Suspense } from "react";
+// // export default ListPage;
 
-// function ListPage() {
-//   const data = useLoaderData();
-//   // console.log("Data from ListPage:", data);
-//   return (
-//     <div className="listPage">
-//       <div className="listContainer">
-//         <div className="wrapper">
-//           <Filter />
-//           <Suspense fallback={<p>Loading posts...</p>}>
-//             <Await
-//               resolve={data.postResponse}
-//               errorElement={<p>Error loading posts!</p>}
-//             >
-//               {(postResponse) => {
-//                 if (!postResponse?.data?.length) {
-//                   return <p>No posts found!</p>;
-//                 }
-//                 return postResponse.data.map((post) => (
-//                   <Card
-//                     key={post.id}
-//                     item={{
-//                       id: post.id,
-//                       title: post.title,
-//                       price: post.price,
-//                       images: post.images,
-//                       address: post.address,
-//                     }}
-//                   />
-//                 ));
-//               }}
-//             </Await>
-//           </Suspense>
-//         </div>
-//       </div>
-//       <div className="mapContainer">
-//         <Suspense fallback={<p>Loading map...</p>}>
-//           <Await
-//             resolve={data.postResponse}
-//             errorElement={<p>Error loading map data!</p>}
-//           >
-//             {(postResponse) => {
-//               if (!postResponse?.data?.length) {
-//                 return <p>No locations available for mapping!</p>;
-//               }
-//               return <Map items={postResponse.data} />;
-//             }}
-//           </Await>
-//         </Suspense>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default ListPage;
-
+// import React, { useEffect, useState } from "react";
 // import "./listPage.scss";
 // import Filter from "../../component/filter/filter";
 // import Card from "../../component/card/card";
@@ -70,15 +11,36 @@
 
 // function ListPage() {
 //   const data = useLoaderData();
-//   console.log("Post Response:", data?.postResponse);
-//   console.log("Is data array:", Array.isArray(data?.postResponse?.data));
-//   console.log("Data length:", data?.postResponse?.data?.length);
+//   const [isMapView, setIsMapView] = useState(false);
+//   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 738);
+
+//   // Resize handler to check screen size
+//   useEffect(() => {
+//     const handleResize = () => {
+//       setIsLargeScreen(window.innerWidth > 738);
+//     };
+
+//     // Add resize event listener
+//     window.addEventListener("resize", handleResize);
+
+//     // Cleanup listener on component unmount
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
 //   return (
 //     <div className="listPage">
-//       <div className="listContainer">
+//       {/* List Container */}
+//       <div
+//         className="listContainer"
+//         style={{
+//           display: isLargeScreen || !isMapView ? "flex" : "none",
+//         }}
+//       >
 //         <div className="wrapper">
-//           <Filter />
-
+//           {/* <Filter /> */}
+//           <div className="filterBar">
+//             <Filter />
+//           </div>
 //           <Suspense fallback={<p>Loading posts...</p>}>
 //             <Await
 //               resolve={data.postResponse}
@@ -100,10 +62,16 @@
 //               }
 //             </Await>
 //           </Suspense>
-//           {/* <div className="mapListToggle"> Map</div> */}
 //         </div>
 //       </div>
-//       <div className="mapContainer">
+
+//       {/* Map Container */}
+//       <div
+//         className="mapContainer"
+//         style={{
+//           display: isLargeScreen || isMapView ? "flex" : "none",
+//         }}
+//       >
 //         <Suspense fallback={<p>Loading map...</p>}>
 //           <Await
 //             resolve={data.postResponse}
@@ -113,78 +81,6 @@
 //           </Await>
 //         </Suspense>
 //       </div>
-
-//       <div className="toggleContainer">
-//         <Toggle
-//           activeView={view}
-//           setActiveView={setView}
-//           options={["list", "map"]}
-//         />
-//       </div>
-//     </div>
-//   );
-// }
-
-// import "./listPage.scss";
-// import Filter from "../../component/filter/filter";
-// import Card from "../../component/card/card";
-// import Map from "../../component/map/map";
-// import { Await, useLoaderData } from "react-router-dom";
-// import { Suspense, useState } from "react";
-// import Toggle from "../../component/toggle/Toggle";
-
-// function ListPage() {
-//   const data = useLoaderData();
-//   const [isMapView, setIsMapView] = useState(false); // Toggle state for map and list views
-
-//   console.log("Post Response:", data?.postResponse);
-//   console.log("Is data array:", Array.isArray(data?.postResponse?.data));
-//   console.log("Data length:", data?.postResponse?.data?.length);
-
-//   return (
-//     <div className="listPage">
-//       <div className="listContainer">
-//         <div className="wrapper">
-//           <Filter />
-
-//           {!isMapView && (
-//             <Suspense fallback={<p>Loading posts...</p>}>
-//               <Await
-//                 resolve={data.postResponse}
-//                 errorElement={<p>Error loading posts!</p>}
-//               >
-//                 {(postResponse) =>
-//                   postResponse.data.map((post) => (
-//                     <Card
-//                       key={post.id}
-//                       item={{
-//                         id: post.id,
-//                         title: post.title,
-//                         price: post.price,
-//                         images: post.images,
-//                         address: post.address,
-//                       }}
-//                     />
-//                   ))
-//                 }
-//               </Await>
-//             </Suspense>
-//           )}
-//         </div>
-//       </div>
-
-//       {!isMapView && (
-//         <div className="mapContainer">
-//           <Suspense fallback={<p>Loading map...</p>}>
-//             <Await
-//               resolve={data.postResponse}
-//               errorElement={<p>Error loading map data!</p>}
-//             >
-//               {(postResponse) => <Map items={postResponse.data} />}
-//             </Await>
-//           </Suspense>
-//         </div>
-//       )}
 
 //       {/* Toggle Button */}
 //       <div className="mapListToggle">
@@ -200,29 +96,45 @@
 
 // export default ListPage;
 
+import React, { useEffect, useState } from "react";
 import "./listPage.scss";
 import Filter from "../../component/filter/filter";
 import Card from "../../component/card/card";
 import Map from "../../component/map/map";
 import { Await, useLoaderData } from "react-router-dom";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import Toggle from "../../component/toggle/Toggle";
 
 function ListPage() {
   const data = useLoaderData();
-  const [isMapView, setIsMapView] = useState(false); // Toggle state for map and list views
+  const [isMapView, setIsMapView] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 738);
 
-  console.log("Post Response:", data?.postResponse);
-  console.log("Is data array:", Array.isArray(data?.postResponse?.data));
-  console.log("Data length:", data?.postResponse?.data?.length);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 738);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="listPage">
-      <div className="listContainer">
-        <div className="wrapper">
-          <Filter />
+      {/* Filter Bar */}
+      <div className="filterBar">
+        <Filter />
+      </div>
 
-          {!isMapView && (
+      {/* Content Area */}
+      <div className="contentArea">
+        {/* List Container */}
+        <div
+          className={`listContainer ${
+            !isLargeScreen && isMapView ? "hidden" : ""
+          }`}
+        >
+          <div className="wrapper">
             <Suspense fallback={<p>Loading posts...</p>}>
               <Await
                 resolve={data.postResponse}
@@ -244,12 +156,15 @@ function ListPage() {
                 }
               </Await>
             </Suspense>
-          )}
+          </div>
         </div>
-      </div>
 
-      {isMapView && (
-        <div className="mapContainer">
+        {/* Map Container */}
+        <div
+          className={`mapContainer ${
+            isLargeScreen || isMapView ? "visible" : ""
+          }`}
+        >
           <Suspense fallback={<p>Loading map...</p>}>
             <Await
               resolve={data.postResponse}
@@ -259,7 +174,7 @@ function ListPage() {
             </Await>
           </Suspense>
         </div>
-      )}
+      </div>
 
       {/* Toggle Button */}
       <div className="mapListToggle">
