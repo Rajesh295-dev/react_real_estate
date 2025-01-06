@@ -1,0 +1,26 @@
+.toggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: #e8e8e8;
+    }
+
+    &.active {
+      background-color: #fece51;
+      color: #fff;
+      border: 1px solid #fece51;
+    }
+  }
+}

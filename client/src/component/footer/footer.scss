@@ -1,7 +1,7 @@
 @import "../../responsive.scss";
 
 .footer {
-  height: 100vh;
+  height: 50vh;
   position: relative;
   background-color: #333; // Dark background
   color: #fff; // White text
@@ -73,9 +73,10 @@
   // Responsive adjustments
   @include sm {
     .footerContainer {
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       text-align: center;
+      overflow-y: auto;
 
       .footerSection {
         margin-bottom: 30px;

@@ -1,22 +1,144 @@
+// @import "../../responsive.scss";
+// .listPage {
+//   display: flex;
+//   height: 100%;
+
+//   .listContainer {
+//     flex: 3;
+//     height: 100%;
+//     width: 100%;
+//     padding: 10px;
+//     // background-color: cadetblue;
+//     @include sm {
+//       padding: 10px;
+//     }
+//     .wrapper {
+//       // background-color: aquamarine;
+//       height: 100%;
+//       width: 100%;
+//       // padding-right: 50px;
+//       display: flex;
+//       flex-direction: column;
+//       gap: 50px;
+//       overflow-y: scroll;
+//       padding-bottom: 50px;
+//     }
+//   }
+//   .mapContainer {
+//     flex: 2;
+//     height: 100%;
+//     background-color: #fcf5f3;
+//     @include sm {
+//       display: none;
+//     }
+//   }
+
+//   .mapListToggle {
+//     display: flex;
+//     align-self: center;
+//     position: sticky;
+//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+//     background-color: mediumseagreen;
+//     border-radius: 10%;
+//     transform: translateY(-100px);
+//   }
+// }
+
+// @import "../../responsive.scss";
+
+// .listPage {
+//   display: flex;
+//   height: 100%;
+
+//   .listContainer {
+//     flex: 3;
+//     height: 100%;
+//     width: 100%;
+//     padding: 10px;
+
+//     @include sm {
+//       padding: 10px;
+//     }
+
+//     .wrapper {
+//       height: 100%;
+//       width: 100%;
+//       display: flex;
+//       flex-direction: column;
+//       gap: 50px;
+//       overflow-y: scroll;
+//       padding-bottom: 50px;
+//     }
+//   }
+
+//   .mapContainer {
+//     flex: 2;
+//     height: 100%;
+//     background-color: #fcf5f3;
+
+//     @include sm {
+//       display: none; // Hide the map on small screens
+//     }
+//   }
+
+//   .mapListToggle {
+//     display: none; // Hide by default
+//     align-self: center;
+//     position: fixed; // Fix position at the bottom of the screen
+//     bottom: 20px; // Add a margin from the bottom of the screen
+//     left: 50%; // Center horizontally
+//     transform: translateX(-50%);
+//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+//     background-color: mediumseagreen;
+//     border-radius: 50px; // Rounded button
+//     padding: 10px 20px;
+//     z-index: 10; // Ensure it's above other content
+//     cursor: pointer;
+//     color: #fff;
+//     font-size: 14px;
+//     font-weight: bold;
+//     text-align: center;
+//     transition: background-color 0.3s ease, transform 0.3s ease;
+
+//     &:hover {
+//       background-color: #2e8b57; // Darker shade on hover
+//       transform: translate(-50%, -5px); // Slight lift effect
+//     }
+
+//     @include sm {
+//       display: flex; // Show the toggle on small screens
+//     }
+//   }
+// }
+
 @import "../../responsive.scss";
+
 .listPage {
   display: flex;
+  flex-direction: row; // Ensure children are aligned in a row
   height: 100%;
+  width: 100%;
+
+  @include sm {
+    flex-direction: column; // Stack items vertically on small screens
+  }
 
   .listContainer {
-    flex: 3;
+    background-color: bisque;
+    flex: 3; // Takes up 3 parts of the available space
     height: 100%;
     width: 100%;
-    padding: 20px;
-    // background-color: cadetblue;
+    padding: 10px;
+    overflow-y: auto; // Allow scrolling if content overflows
+
     @include sm {
       padding: 10px;
+      width: 100%; // Ensure full width on small screens
     }
+
     .wrapper {
-      // background-color: aquamarine;
       height: 100%;
       width: 100%;
-      // padding-right: 50px;
       display: flex;
       flex-direction: column;
       gap: 50px;
@@ -24,9 +146,50 @@
       padding-bottom: 50px;
     }
   }
+
   .mapContainer {
-    flex: 2;
+    flex: 3; // Takes up 2 parts of the available space
     height: 100%;
+    width: 100%; // Ensure map spans the full width of its container
     background-color: #fcf5f3;
+    margin-bottom: 50px;
+
+    @include sm {
+      display: block;
+      position: relative;
+      margin: 0 auto;
+      width: 100%;
+      height: 100vh; // Full viewport height for the map
+      max-height: 100vh;
+    }
+  }
+
+  .mapListToggle {
+    display: none; // Hide by default
+    align-self: center;
+    position: fixed; // Fix position at the bottom of the screen
+    bottom: 20px; // Add a margin from the bottom of the screen
+    left: 50%; // Center horizontally
+    transform: translateX(-50%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    background-color: mediumseagreen;
+    border-radius: 50px; // Rounded button
+    padding: 10px 20px;
+    z-index: 10; // Ensure it's above other content
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background-color: #2e8b57; // Darker shade on hover
+      transform: translate(-50%, -5px); // Slight lift effect
+    }
+
+    @include sm {
+      display: flex; // Show the toggle on small screens
+    }
   }
 }
