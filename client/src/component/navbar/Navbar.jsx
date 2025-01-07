@@ -18,10 +18,10 @@ function Navbar() {
   return (
     <nav className="nav">
       <div className="left">
-        <a href="" className="logo">
+        <Link href="" className="logo">
           <span> ReactEstate </span>
           <img src="/logo1.jpg" alt=""></img>
-        </a>
+        </Link>
         <Link to="">Home</Link>
         {/* <Link to="/zillow">RapidAPI</Link> */}
         <Link to="/list">PropertyList</Link>
@@ -31,7 +31,9 @@ function Navbar() {
       <div className="right">
         {currentUser ? (
           <div className="user">
-            <img src={currentUser.avatar || "/noavatar.jpg"} alt="" />
+            <Link to="/profile">
+              <img src={currentUser.avatar || "/noavatar.jpg"} alt="" />
+            </Link>
             <span>{currentUser.username}</span>
             <Link to="/profile" className="profile">
               {number > 0 && <div className="notification">{number}</div>}
@@ -69,8 +71,8 @@ function Navbar() {
           <Link to="" onClick={handleCloseMenu}>
             Home
           </Link>
-          <Link href="" onClick={handleCloseMenu}>
-            About
+          <Link to="/profile" onClick={handleCloseMenu}>
+            Profile
           </Link>
           <Link to="/list" onClick={handleCloseMenu}>
             PropertyList

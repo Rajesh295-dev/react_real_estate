@@ -75,5 +75,12 @@
     img {
       height: 100px;
     }
+
+    @include sm {
+      flex: 2;
+      img {
+        width: 100%;
+      }
+    }
   }
 }

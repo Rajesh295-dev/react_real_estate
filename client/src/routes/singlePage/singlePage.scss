@@ -2,6 +2,10 @@
 .singlePage {
   display: flex;
   height: 100%;
+  @include sm {
+    width: 100%;
+    margin-left: 20px;
+  }
 
   @include md {
     flex-direction: column;
@@ -102,6 +106,10 @@
         margin-top: 50px;
         color: #555;
         line-height: 20px;
+        @include sm {
+          align-content: center;
+          width: 100%;
+        }
       }
     }
   }

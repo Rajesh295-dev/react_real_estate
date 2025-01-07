@@ -275,9 +275,9 @@ function ListPage() {
       {/* Toggle Button */}
       <div className="mapListToggle">
         <Toggle
-          activeView={isMapView ? "map" : "list"}
-          setActiveView={(view) => setIsMapView(view === "map")}
-          options={["list", "map"]}
+          activeView={isMapView ? "List" : "Map"}
+          setActiveView={(view) => setIsMapView(view === "Map")}
+          options={["Map", "List"]}
         />
       </div>
     </div>
