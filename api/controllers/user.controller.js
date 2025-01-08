@@ -132,7 +132,10 @@ export const savePost = async (req, res) => {
 
 export const profilePosts = async (req, res) => {
 
-    const tokenUserId = req.params.userId;
+    const tokenUserId = req.userId; // Use req.userId from middleware
+
+
+    // const tokenUserId = req.params.userId;
 
     try {
         const userPosts = await prisma.post.findMany({
