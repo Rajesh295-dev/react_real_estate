@@ -2,9 +2,11 @@
 
 import jwt from "jsonwebtoken"
 export const verifyToken = (req, res, next) => {
-    const token = req.cookies.token; // Get token from cookies
+
+    console.log("verified token", token)
+    const token = req.cookies?.token; // Get token from cookies
     if (!token) {
-        return res.status(401).json({ message: "Token is missing" });
+        return res.status(401).json({ message: "Token is missing..." });
     }
 
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, payload) => {

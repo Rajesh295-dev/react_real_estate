@@ -92,10 +92,15 @@ app.get('/api/health', (req, res) => {
     res.status(200).json({ status: 'OK' });
 });
 
-const PORT = 8800;
-app.listen(PORT, () => {
-    console.log(`Backend is running on port ${PORT}`);
-});
+// const PORT = 8800;
+// app.listen(PORT, () => {
+//     console.log(`Backend is running on port ${PORT}`);
+// });
+
+// const PORT = 3000;
+// app.listen(PORT, () => {
+//     console.log(`Backend is running on port ${PORT}`);
+// });
 
 
 // app.listen(8800, () => {
