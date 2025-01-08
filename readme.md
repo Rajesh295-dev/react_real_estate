@@ -1,68 +1,69 @@
 # Real Estate Application
 
-![License](https://img.shields.io/badge/license-MIT-green)
-![Vite](https://img.shields.io/badge/bundler-Vite-purple)
-![React](https://img.shields.io/badge/frontend-React-blue)
-![MongoDB](https://img.shields.io/badge/database-MongoDB-brightgreen)
-![Node.js](https://img.shields.io/badge/backend-Node.js-green) ![Express](https://img.shields.io/badge/framework-Express-yellow)
-![Leaflet](https://img.shields.io/badge/maps-Leaflet-lightgreen) ![Prisma](https://img.shields.io/badge/ORM-Prisma-orange) ![JWT](https://img.shields.io/badge/authentication-JWT-red)
-![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-blue)
+![License](https://img.shields.io/badge/license-MIT-green) ![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-blue) ![React](https://img.shields.io/badge/frontend-React-blue) ![MongoDB](https://img.shields.io/badge/database-MongoDB-brightgreen) ![Leaflet](https://img.shields.io/badge/maps-Leaflet-lightgreen) ![Node.js](https://img.shields.io/badge/backend-Node.js-green) ![Express](https://img.shields.io/badge/framework-Express-yellow) ![Prisma](https://img.shields.io/badge/ORM-Prisma-orange) ![JWT](https://img.shields.io/badge/authentication-JWT-red) ![Vite](https://img.shields.io/badge/bundler-Vite-purple)
 
 This project is a full-stack real estate application built with the MERN (MongoDB, Express.js, React, Node.js) stack. It features real-time chat functionality using **Socket.IO** and includes user authentication, item saving, and an interactive map for property browsing.
-
-## Features
-
-### 1. List View
-
-- Displays properties in a tile or card format.
-- Includes a filter bar for users to narrow down their search.
-- Responsive layout optimized for larger screens.
-
-### 2. Map View
-
-- Interactive map powered by **Leaflet**.
-- Pins represent property locations, allowing users to explore properties geographically.
-- Dynamically updates to reflect filtered results.
-
-### 3. Toggle Functionality
-
-- Users can seamlessly switch between list view and map view using a toggle button.
-- Mobile users start in list view with an option to switch to the map view.
-
-### 4. Fully Responsive Design
-
-- Adapts layout based on screen size.
-- Ensures proper map rendering on mobile devices by recalculating map dimensions dynamically.
-
-### 5. Live Chat with Socket.IO
-
-- Integrated **Socket.IO** for real-time chat functionality.
-- Users can chat with agents or support staff directly within the application.
-
-### 6. Item Saving Feature
-
-- Allows users to save items from the list view.
-- Saved items are accessible for future reference, enhancing user experience.
-
-### 7. User Authentication
-
-- User registration and login system with JWT-based authentication.
-- Securely manages user sessions with cookies.
 
 ---
 
 ## Tech Stack
 
-- **React**: Component-based UI.
-- **React Router Dom**: Handles routing and navigation.
-- **Node.js & Express.js**: Backend API and server.
-- **MongoDB**: NoSQL database for data storage.
-- **Prisma**: Database ORM for seamless interactions with MongoDB.
-- **Socket.IO**: Enables real-time communication for live chat functionality.
-- **SCSS**: Modular, responsive styling.
-- **JWT & Cookies**: Secure user authentication and session management.
+- **[React](https://reactjs.org/)**: Component-based UI.
+- **[React Router Dom](https://reactrouter.com/)**: Handles routing and navigation.
+- **[Node.js](https://nodejs.org/)** & **[Express.js](https://expressjs.com/)**: Backend API and server.
+- **[MongoDB](https://www.mongodb.com/)**: NoSQL database for data storage.
+- **[Prisma](https://www.prisma.io/)**: Database ORM for seamless interactions with MongoDB.
+- **[Socket.IO](https://socket.io/)**: Enables real-time communication for live chat functionality.
+- **[SCSS](https://sass-lang.com/)**: Modular, responsive styling.
+- **[JWT](https://jwt.io/)** & **Cookies**: Secure user authentication and session management.
+- **[Cloudinary](https://cloudinary.com/)**: Media management and optimization.
 
 ---
+
+## Features
+
+### 1. User Authentication
+
+- User registration and login system with JWT-based authentication.
+- Securely manages user sessions with cookies.
+
+### 2. Fully Responsive Design
+
+- Adapts layout based on screen size.
+- Ensures proper map rendering on mobile devices by recalculating map dimensions dynamically.
+
+### 3. Media Management with Cloudinary
+
+- Integrated **Cloudinary** for efficient media storage and optimization.
+- Ensured property images are optimized for fast loading across devices.
+- Improved performance with responsive image handling.
+
+### 4. Live Chat with Socket.IO
+
+- Integrated **Socket.IO** for real-time chat functionality.
+- Users can chat with agents or support staff directly within the application.
+
+### 5. List View
+
+- Displays properties in a tile or card format.
+- Includes a filter bar for users to narrow down their search.
+- Responsive layout optimized for larger screens.
+
+### 6. Map View
+
+- Interactive map powered by **Leaflet**.
+- Pins represent property locations, allowing users to explore properties geographically.
+- Dynamically updates to reflect filtered results.
+
+### 7. Toggle Functionality
+
+- Users can seamlessly switch between list view and map view using a toggle button.
+- Mobile users start in list view with an option to switch to the map view.
+
+### 8. Item Saving Feature
+
+- Allows users to save items from the list view.
+- Saved items are accessible for future reference, enhancing user experience.
 
 ## Installation
 
@@ -141,6 +142,12 @@ real-estate-app/
 ---
 
 ## What I Did on the Real Estate Project
+
+### Media Management with Cloudinary:
+
+- Integrated **Cloudinary** for efficient media storage and optimization.
+- Managed property images and ensured they were optimized for fast loading across devices.
+- Implemented responsive image handling to improve performance and user experience.
 
 ### Developed the Front-End Interface:
 
