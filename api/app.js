@@ -24,6 +24,20 @@ app.use(cookieParser())
 // this is if console ninja doesnot work
 // export PATH="$PATH:/Users/rajeshgautam/.console-ninja/.bin"
 
+app.get("/set-cookie", (req, res) => {
+    res.cookie("testCookie", "testValue", {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60, // 1 hour
+    });
+    res.send("Cookie has been set!");
+});
+
+app.get("/get-cookie", (req, res) => {
+    console.log("Cookies:", req.cookies); // Logs cookies from the request
+    res.json(req.cookies);
+});
+
+
 
 app.use(
     cors({
