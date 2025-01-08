@@ -18,6 +18,8 @@
 import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
+
+    console.log("Authorization Header:", req.headers.authorization);
     const authHeader = req.headers.authorization;
     if (!authHeader) return res.status(401).json({ message: "Token is missing" });
 

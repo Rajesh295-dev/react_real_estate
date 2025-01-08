@@ -34,14 +34,30 @@ export const listPageLoader = async ({ request, params }) => {
     })
 }
 
+// export const profilePageLoader = async () => {
+//     const postPromise = await apiRequest("/users/profilePosts")
+//     const chatPromise = await apiRequest("/chats")
+//     return defer({
+//         postResponse: postPromise,
+//         chatResponse: chatPromise,
+//     })
+// }
+
+
 export const profilePageLoader = async () => {
-    const postPromise = await apiRequest("/users/profilePosts")
-    const chatPromise = await apiRequest("/chats")
-    return defer({
-        postResponse: postPromise,
-        chatResponse: chatPromise,
-    })
-}
+    try {
+        const postPromise = apiRequest.get("/users/profilePosts");
+        const chatPromise = apiRequest.get("/chats");
 
-
+        return defer({
+            postResponse: postPromise,
+            chatResponse: chatPromise,
+        });
+    } catch (error) {
+        console.error("Error in profilePageLoader:", error.response || error.message);
+        throw new Response("Failed to load profile data. Please log in again.", {
+            status: 401, // Set appropriate status code
+        });
+    }
+};
 
