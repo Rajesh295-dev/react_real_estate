@@ -33,9 +33,10 @@ app.get("/api/set-cookie", (req, res) => {
 });
 
 app.get("/api/get-cookie", (req, res) => {
-    console.log("Cookies:", req.cookies); // Logs cookies from the request
+    console.log("Request Cookies:", req.cookies); // Should include "token"
     res.json(req.cookies);
 });
+
 
 app.get("/api/debug", (req, res) => {
     res.json({
@@ -44,6 +45,18 @@ app.get("/api/debug", (req, res) => {
         env: process.env,
     });
 });
+
+app.get("/api/test-token", (req, res) => {
+    const token = "testTokenValue";
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+    });
+    res.send("Token cookie has been set!");
+});
+
 
 
 
