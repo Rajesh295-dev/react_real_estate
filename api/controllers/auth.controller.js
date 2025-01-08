@@ -27,6 +27,9 @@ export const register = async (req, res) => {
 
 
 }
+
+
+
 export const login = async (req, res) => {
     //db operations
 
@@ -46,10 +49,20 @@ export const login = async (req, res) => {
         //res.setHeader("Set-Cookie", "test=" + "myValue").json({ message: "success!!" }
         const age = 1000 * 60 * 60 * 24 * 7;
 
-        const token = jwt.sign({
-            id: user.id,
-            isAdmin: false,
-        }, process.env.JWT_SECRET_KEY, { expiresIn: age })
+        // const age = 7 * 24 * 60 * 60; // 7 days in seconds
+        const token = jwt.sign(
+            { id: user.id, isAdmin: false },
+            process.env.JWT_SECRET_KEY,
+            { expiresIn: `${age}s` } // Explicitly specify seconds
+        );
+
+
+        // const token = jwt.sign({
+        //     id: user.id,
+        //     isAdmin: false,
+        // }, process.env.JWT_SECRET_KEY, { expiresIn: age })
+
+        console.log("generated token", token)
 
         const { password: userPassword, ...userInfo } = user
 
@@ -64,6 +77,9 @@ export const login = async (req, res) => {
     }
 
 }
+
+
+
 export const logout = (req, res) => {
     //db operations
 
