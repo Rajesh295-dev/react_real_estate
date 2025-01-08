@@ -1,8 +1,8 @@
-# Real Estate Application
+### [ReactEstate](https://reactrealestate.vercel.app/)
 
 ![License](https://img.shields.io/badge/license-MIT-green) ![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-blue) ![React](https://img.shields.io/badge/frontend-React-blue) ![MongoDB](https://img.shields.io/badge/database-MongoDB-brightgreen) ![Leaflet](https://img.shields.io/badge/maps-Leaflet-lightgreen) ![Node.js](https://img.shields.io/badge/backend-Node.js-green) ![Express](https://img.shields.io/badge/framework-Express-yellow) ![Prisma](https://img.shields.io/badge/ORM-Prisma-orange) ![JWT](https://img.shields.io/badge/authentication-JWT-red) ![Vite](https://img.shields.io/badge/bundler-Vite-purple)
 
-This project is a full-stack real estate application built with the MERN (MongoDB, Express.js, React, Node.js) stack. It features real-time chat functionality using **Socket.IO** and includes user authentication, item saving, and an interactive map for property browsing.
+[ReactEstate](https://reactrealestate.vercel.app/) is a comprehensive full-stack real estate application developed using the MERN (MongoDB, Express.js, React, Node.js) stack. It is designed to integrate advanced front-end and back-end development skills into a cohesive, feature-rich platform. By implementing user authentication, JWT, real-time chat, notifications, media upload, item searching, item saving, and an interactive map, the project demonstrates the ability to build scalable, modern web applications while applying best practices and leveraging cutting-edge technologies. The goal of this project was to enhance proficiency in full-stack development by building a feature-rich application that leverages modern technologies and best practices.
 
 ---
 
@@ -21,49 +21,6 @@ This project is a full-stack real estate application built with the MERN (MongoD
 ---
 
 ## Features
-
-### 1. User Authentication
-
-- User registration and login system with JWT-based authentication.
-- Securely manages user sessions with cookies.
-
-### 2. Fully Responsive Design
-
-- Adapts layout based on screen size.
-- Ensures proper map rendering on mobile devices by recalculating map dimensions dynamically.
-
-### 3. Media Management with Cloudinary
-
-- Integrated **Cloudinary** for efficient media storage and optimization.
-- Ensured property images are optimized for fast loading across devices.
-- Improved performance with responsive image handling.
-
-### 4. Live Chat with Socket.IO
-
-- Integrated **Socket.IO** for real-time chat functionality.
-- Users can chat with agents or support staff directly within the application.
-
-### 5. List View
-
-- Displays properties in a tile or card format.
-- Includes a filter bar for users to narrow down their search.
-- Responsive layout optimized for larger screens.
-
-### 6. Map View
-
-- Interactive map powered by **Leaflet**.
-- Pins represent property locations, allowing users to explore properties geographically.
-- Dynamically updates to reflect filtered results.
-
-### 7. Toggle Functionality
-
-- Users can seamlessly switch between list view and map view using a toggle button.
-- Mobile users start in list view with an option to switch to the map view.
-
-### 8. Item Saving Feature
-
-- Allows users to save items from the list view.
-- Saved items are accessible for future reference, enhancing user experience.
 
 ## Installation
 
@@ -134,14 +91,37 @@ real-estate-app/
 ```
 
 - **components**: Reusable UI components (Filter, Card, Map, Toggle, Chat).
-- **pages**: Application pages, such as `ListPage`.
-- **backend**: Server-side logic, including routes, controllers, and models.
+- **pages**: Application pages, such as `ListPage`, `ProfilePage`, `Login`, `Register`, `ProfileUpdatepage`.
+- **backend**: Server-side logic, including routes, controllers, middelware, models and library for Prisma-ORM.
 - **socket.io**: Logic for handling real-time events and chat communication.
 - **styles**: Global and modular SCSS files.
 
 ---
 
 ## What I Did on the Real Estate Project
+
+### User Authentication:
+
+- Built a JWT-based authentication system with secure cookie management.
+- Allowed users to register, log in, and maintain sessions.
+
+### Middleware Functionality:
+
+- Developed custom middleware in Express.js to handle authentication and request validation.
+- Streamlined request logging and error handling using middleware.
+- Ensured secure access to protected routes by integrating middleware with JWT-based authentication.
+
+### Integrated APIs for Data Management:
+
+- Built RESTful APIs using Node.js and Express.js.
+- Used Prisma to interact with MongoDB for managing property data.
+- Provided endpoints for property listing, saving, and user authentication.
+
+### Prisma ORM Integration:
+
+- Leveraged **Prisma ORM** for efficient and seamless interactions with the MongoDB database.
+- Simplified database schema management and migrations using Prisma's schema definition.
+- Enhanced query performance and maintainability with Prisma's intuitive query builder.
 
 ### Media Management with Cloudinary:
 
@@ -154,12 +134,6 @@ real-estate-app/
 - Designed and implemented the user interface using React.js.
 - Created reusable components like property listings, search filters, and navigation menus.
 - Ensured the UI was both visually appealing and intuitive for users.
-
-### Integrated APIs for Data Management:
-
-- Built RESTful APIs using Node.js and Express.js.
-- Used Prisma to interact with MongoDB for managing property data.
-- Provided endpoints for property listing, saving, and user authentication.
 
 ### Responsive Design Implementation:
 
@@ -186,11 +160,6 @@ real-estate-app/
 - Enabled users to save their favorite properties for future reference.
 - Integrated this feature with MongoDB for persistence.
 
-### User Authentication:
-
-- Built a JWT-based authentication system with secure cookie management.
-- Allowed users to register, log in, and maintain sessions.
-
 ### Optimized Performance:
 
 - Implemented lazy loading for images and code splitting using React’s Suspense and React.lazy.
@@ -205,7 +174,7 @@ real-estate-app/
 
 ## License
 
-This project is licensed under the MIT License.
+![License](https://img.shields.io/badge/license-MIT-green)
 
 ---
 

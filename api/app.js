@@ -61,8 +61,7 @@ app.get("/api/test-token", (req, res) => {
 
 app.use(
     cors({
-        origin: "https://react-real-estate-six.vercel.app",
-        // origin: process.env.CLIENT_URL,
+        origin: process.env.CLIENT_URL,
         methods: ["POST", "GET", "PUT", "DELETE"],
         credentials: true,
     })
