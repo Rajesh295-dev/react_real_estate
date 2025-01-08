@@ -28,6 +28,7 @@ function Navbar() {
         <a>About</a>
         <a>Agents</a>
       </div>
+
       <div className="right">
         {currentUser ? (
           <div className="user">
@@ -50,6 +51,23 @@ function Navbar() {
         )}
 
         <div className="menuIcon">
+          {currentUser ? (
+            <Link to="/profile">
+              <img
+                src={currentUser.avatar || "/noavatar.jpg"} // Fallback to "noavatar.jpg" if no avatar
+                alt="profile"
+                className="profileIcon"
+              />
+            </Link>
+          ) : (
+            <Link to="/login">
+              <img
+                src="/noavatar.jpg" // Show "noavatar.jpg" if no user
+                alt="no-user"
+                className="profileIcon"
+              />
+            </Link>
+          )}
           <img
             src="/menu.png"
             alt=""
@@ -71,8 +89,8 @@ function Navbar() {
           <Link to="" onClick={handleCloseMenu}>
             Home
           </Link>
-          <Link to="/profile" onClick={handleCloseMenu}>
-            Profile
+          <Link to="" onClick={handleCloseMenu}>
+            About
           </Link>
           <Link to="/list" onClick={handleCloseMenu}>
             PropertyList

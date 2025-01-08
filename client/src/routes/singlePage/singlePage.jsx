@@ -1,7 +1,9 @@
 import "./singlePage.scss";
 import Slider from "../../component/slider/slider";
 import Map from "../../component/map/map";
+
 import { useNavigate, useLoaderData } from "react-router-dom";
+
 import DOMPurify from "dompurify";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -144,6 +146,7 @@ function SinglePage() {
               <img src="/chat.png" alt="" />
               Send a Message
             </button>
+
             <button
               onClick={handleSave}
               style={{

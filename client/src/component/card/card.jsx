@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./card.scss";
 import { Link } from "react-router-dom";
+import apiRequest from "../../library/apiRequest";
+import { AuthContext } from "../../context/AuthContext";
+import { useNavigate, useLoaderData } from "react-router-dom";
 
 function Card({ item }) {
   //console.log("first Image URL:", item.images);
   //console.log("Type of item.images:", typeof item.images);
+  const post = useLoaderData();
+  const [saved, setSaved] = useState(post.isSaved);
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [imageUrl, setImageUrl] = useState("");
 
@@ -21,6 +28,20 @@ function Card({ item }) {
       //console.log("Single image string:", item.images);
     }
   }, [item.images]);
+
+  const handleSave = async () => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+    // AFTER REACT 19 UPDATE TO USEOPTIMISTIK HOOK
+    setSaved((prev) => !prev);
+    try {
+      await apiRequest.post("/users/save", { postId: post.id });
+    } catch (err) {
+      console.log(err);
+      setSaved((prev) => !prev);
+    }
+  };
 
   return (
     <div className="card">
@@ -71,7 +92,13 @@ function Card({ item }) {
             </div>
           </div>
           <div className="icons">
-            <div className="icon">
+            <div
+              className="icon"
+              style={{
+                backgroundColor: saved ? "#fece51" : "white",
+              }}
+              onClick={handleSave}
+            >
               <img src="/save.png"></img>
             </div>
             <div className="icon">

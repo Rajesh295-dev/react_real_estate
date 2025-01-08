@@ -236,6 +236,7 @@
     }
 
     .user {
+      background-color: blueviolet;
       display: flex;
       align-items: center;
       font-weight: bold;
@@ -247,6 +248,9 @@
         border-radius: 50%;
         object-fit: cover;
         margin-right: 20px;
+        @include sm {
+          display: initial;
+        }
       }
 
       span {
@@ -287,11 +291,28 @@
 
     .menuIcon {
       display: none;
+      align-items: center;
       z-index: 999;
 
+      .profileIcon {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      a {
+        display: inline-block;
+        margin: 0;
+        padding: 5px;
+        text-decoration: none;
+      }
+
       img {
-        width: 36px;
-        height: 36px;
+        width: 40px;
+        height: 40px;
         cursor: pointer;
       }
 
