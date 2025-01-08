@@ -59,8 +59,6 @@ app.get("/api/test-token", (req, res) => {
 
 
 
-
-
 app.use(
     cors({
         origin: "https://react-real-estate-six.vercel.app",
@@ -101,6 +99,7 @@ app.listen(PORT, () => {
 // })
 
 // Export the app for Vercel
+
 export default app;
 
 
