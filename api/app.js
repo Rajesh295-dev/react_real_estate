@@ -50,7 +50,7 @@ app.get("/api/test-token", (req, res) => {
     const token = "testTokenValue";
     res.cookie("token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: process.env.CLIENT_URL,
         sameSite: "strict",
         maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
     });
