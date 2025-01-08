@@ -130,31 +130,62 @@ export const savePost = async (req, res) => {
 }
 
 
+// export const profilePosts = async (req, res) => {
+
+//     const tokenUserId = req.userId; // Use req.userId from middleware
+//     console.log("Token userId received:", tokenUserId);
+
+//     //  const tokenUserId = req.params.userId;
+
+//     try {
+//         const userPosts = await prisma.post.findMany({
+//             where: { userId: tokenUserId }
+//         });
+//         const saved = await prisma.savedPost.findMany({
+//             where: { userId: tokenUserId },
+//             include: {
+//                 post: true,
+//             },
+//         });
+//         const savedPosts = saved.map(item => item.post)
+//         res.status(200).json({ userPosts, savedPosts })
+
+//     } catch (err) {
+//         console.log(err)
+//         res.status(500).json({ message: "Failed to get Posts and saved Posts " })
+//     }
+// }
+
 export const profilePosts = async (req, res) => {
-
     const tokenUserId = req.userId; // Use req.userId from middleware
+    console.log("Token userId received:", tokenUserId);
 
-
-    // const tokenUserId = req.params.userId;
+    if (!tokenUserId) {
+        return res.status(401).json({ message: "Not Authenticated", userId: null });
+    }
 
     try {
         const userPosts = await prisma.post.findMany({
-            where: { userId: tokenUserId }
+            where: { userId: tokenUserId },
         });
+        console.log("User posts fetched:", userPosts);
+
         const saved = await prisma.savedPost.findMany({
             where: { userId: tokenUserId },
             include: {
                 post: true,
             },
         });
-        const savedPosts = saved.map(item => item.post)
-        res.status(200).json({ userPosts, savedPosts })
+        console.log("Saved posts fetched:", saved);
 
+        const savedPosts = saved.map((item) => item.post);
+        res.status(200).json({ userPosts, savedPosts });
     } catch (err) {
-        console.log(err)
-        res.status(500).json({ message: "Failed to get Posts and saved Posts " })
+        console.error("Error fetching posts and saved posts:", err);
+        res.status(500).json({ message: "Failed to get Posts and saved Posts" });
     }
-}
+};
+
 
 
 export const getNotificationsNumber = async (req, res) => {
