@@ -11,6 +11,11 @@ import messageRoute from "./routes/message.route.js"
 // adding zillow page route
 import zillowRoute from "./routes/zillow.route.js"
 
+
+// {
+//     "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+//   }
+
 // const PORT = process.env.REACT_APP_PORT || 8800
 // console.log("this is the port for backend 🛺", PORT)
 
