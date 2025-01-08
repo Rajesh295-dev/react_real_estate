@@ -37,6 +37,15 @@ app.get("/api/get-cookie", (req, res) => {
     res.json(req.cookies);
 });
 
+app.get("/api/debug", (req, res) => {
+    res.json({
+        cookies: req.cookies,
+        headers: req.headers,
+        env: process.env,
+    });
+});
+
+
 
 
 app.use(
