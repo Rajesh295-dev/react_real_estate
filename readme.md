@@ -1,6 +1,12 @@
 # Real Estate Application
 
-![License](https://img.shields.io/badge/license-MIT-green) ![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-blue) ![React](https://img.shields.io/badge/frontend-React-blue) ![MongoDB](https://img.shields.io/badge/database-MongoDB-brightgreen) ![Leaflet](https://img.shields.io/badge/maps-Leaflet-lightgreen) ![Node.js](https://img.shields.io/badge/backend-Node.js-green) ![Express](https://img.shields.io/badge/framework-Express-yellow) ![Prisma](https://img.shields.io/badge/ORM-Prisma-orange) ![JWT](https://img.shields.io/badge/authentication-JWT-red)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Vite](https://img.shields.io/badge/bundler-Vite-purple)
+![React](https://img.shields.io/badge/frontend-React-blue)
+![MongoDB](https://img.shields.io/badge/database-MongoDB-brightgreen)
+![Node.js](https://img.shields.io/badge/backend-Node.js-green) ![Express](https://img.shields.io/badge/framework-Express-yellow)
+![Leaflet](https://img.shields.io/badge/maps-Leaflet-lightgreen) ![Prisma](https://img.shields.io/badge/ORM-Prisma-orange) ![JWT](https://img.shields.io/badge/authentication-JWT-red)
+![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-blue)
 
 This project is a full-stack real estate application built with the MERN (MongoDB, Express.js, React, Node.js) stack. It features real-time chat functionality using **Socket.IO** and includes user authentication, item saving, and an interactive map for property browsing.
 
