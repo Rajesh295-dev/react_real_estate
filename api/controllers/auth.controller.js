@@ -85,40 +85,90 @@ export const login = async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        // Find user by username
+        // CHECK IF THE USER EXISTS
+
         const user = await prisma.user.findUnique({
             where: { username },
         });
-        if (!user || !(await bcrypt.compare(password, user.password))) {
-            return res.status(401).json({ message: "Invalid Credentials!" });
-        }
 
-        // Exclude password from response
-        const { password: userPassword, ...userInfo } = user;
+        if (!user) return res.status(400).json({ message: "Invalid Credentials!" });
 
-        // Generate JWT token
-        const age = 1000 * 60 * 60 * 24 * 7; // 7 days in milliseconds
+        // CHECK IF THE PASSWORD IS CORRECT
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+
+        if (!isPasswordValid)
+            return res.status(400).json({ message: "Invalid Credentials!" });
+
+        // GENERATE COOKIE TOKEN AND SEND TO THE USER
+
+        // res.setHeader("Set-Cookie", "test=" + "myValue").json("success")
+        const age = 1000 * 60 * 60 * 24 * 7;
+
         const token = jwt.sign(
-            { id: user.id, isAdmin: false },
+            {
+                id: user.id,
+                isAdmin: false,
+            },
             process.env.JWT_SECRET_KEY,
-            { expiresIn: age / 1000 } // Convert to seconds
+            { expiresIn: age }
         );
 
-        console.log("Generated token:", token);
+        const { password: userPassword, ...userInfo } = user;
 
-        // Set cookie with token
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: "lax", // Use "strict" or "none" if necessary
-            maxAge: age,
-        }).status(200).json(userInfo);
-
+        res
+            .cookie("token", token, {
+                httpOnly: true,
+                secure: true,
+                maxAge: age,
+            })
+            .status(200)
+            .json(userInfo);
     } catch (err) {
-        console.error("Error during login:", err);
-        res.status(500).json({ message: "Failed to Login!" });
+        console.log(err);
+        res.status(500).json({ message: "Failed to login!" });
     }
 };
+
+
+// export const login = async (req, res) => {
+//     const { username, password } = req.body;
+
+//     try {
+//         // Find user by username
+//         const user = await prisma.user.findUnique({
+//             where: { username },
+//         });
+//         if (!user || !(await bcrypt.compare(password, user.password))) {
+//             return res.status(401).json({ message: "Invalid Credentials!" });
+//         }
+
+//         // Exclude password from response
+//         const { password: userPassword, ...userInfo } = user;
+
+//         // Generate JWT token
+//         const age = 1000 * 60 * 60 * 24 * 7; // 7 days in milliseconds
+//         const token = jwt.sign(
+//             { id: user.id, isAdmin: false },
+//             process.env.JWT_SECRET_KEY,
+//             { expiresIn: age / 1000 } // Convert to seconds
+//         );
+
+//         console.log("Generated token:", token);
+
+//         // Set cookie with token
+//         res.cookie("token", token, {
+//             httpOnly: true,
+//             secure: true,
+//             sameSite: "lax", // Use "strict" or "none" if necessary
+//             maxAge: age,
+//         }).status(200).json(userInfo);
+
+//     } catch (err) {
+//         console.error("Error during login:", err);
+//         res.status(500).json({ message: "Failed to Login!" });
+//     }
+// };
 
 
 
