@@ -78,6 +78,7 @@ export const login = async (req, res) => {
             secure: true,
             sameSite: "None",
             maxAge: age,
+            domain: ".reactestate.site",
         })
             .status(200)
             .json(userInfo);
