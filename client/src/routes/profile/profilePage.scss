@@ -16,6 +16,8 @@
 
   .details {
     flex: 3;
+    height: 100%;
+    width: 100%;
     overflow-y: scroll;
     padding-bottom: 50px;
     margin-bottom: 50px;
@@ -81,7 +83,7 @@
   .chatContainer {
     flex: 2;
     background-color: rgb(107, 177, 139);
-    
+
     // background-color: #fcf5f3;
     height: 100%;
     @include md {

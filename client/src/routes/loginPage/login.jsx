@@ -91,9 +91,9 @@ function Login() {
 
     try {
       const res = await apiRequest.post("/auth/login", { username, password });
-      const { token } = res.data;
-      console.log("data after login", res.data);
-      console.log("token after login", token);
+      // const { token } = res.data;
+      // console.log("data after login", res.data);
+      // console.log("token after login", token);
       updateUser(res.data);
       navigate("/");
     } catch (err) {

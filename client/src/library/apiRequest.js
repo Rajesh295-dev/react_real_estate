@@ -22,8 +22,11 @@ export default apiRequest;
 
 // // Add Authorization token to every request
 // apiRequest.interceptors.request.use((config) => {
-//     const token = localStorage.getItem("token");
-//     console.log("token with api ", token)
+//     const user = JSON.parse(localStorage.getItem("user"));
+//     // Access the token property
+//     const token = user?.token;
+
+//     console.log("token with api in apiRequest ", token)
 //     if (token) {
 //         config.headers.Authorization = `Bearer ${token}`;
 //     }

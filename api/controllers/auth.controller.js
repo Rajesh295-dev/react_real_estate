@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import prisma from "../lib/prisma.js";
+
 export const register = async (req, res) => {
     const { username, password, email, } = (req.body);
     // console.log(req.body)
@@ -29,6 +30,8 @@ export const register = async (req, res) => {
 }
 
 
+
+//it will send the token via Cookies 
 
 export const login = async (req, res) => {
     const { username, password } = req.body;
@@ -65,15 +68,20 @@ export const login = async (req, res) => {
 
         const { password: userPassword, ...userInfo } = user;
 
-        res
-            .cookie("token", token, {
-                httpOnly: true,
-                secure: true,
-                sameSite: "None",
-                maxAge: age,
-            })
+        // res.status(200).json({
+        //     token,
+        //     userInfo,
+        // });
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "None",
+            maxAge: age,
+        })
             .status(200)
             .json(userInfo);
+
     } catch (err) {
         console.log(err);
         res.status(500).json({ message: "Failed to login!" });
