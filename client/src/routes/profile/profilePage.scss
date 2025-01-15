@@ -1,10 +1,12 @@
 @import "../../responsive.scss";
 
 .profilePage {
-  // background-color: blueviolet;
-  padding-top: 15px;
   display: flex;
-  height: 100%;
+  padding: 15px;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: auto;
+  overflow: scroll;
 
   @include md {
     flex-direction: column;
@@ -14,16 +16,25 @@
     }
   }
 
+  @include sm {
+    flex-direction: column;
+    overflow: scroll;
+  }
+
   .details {
     flex: 3;
     height: 100%;
     width: 100%;
     overflow-y: scroll;
     padding-bottom: 50px;
-    margin-bottom: 50px;
+
+    // @include md {
+    //   flex: none;
+    //   height: max-content;
+    // }
+
     @include md {
       flex: none;
-      height: max-content;
     }
     .wrapper {
       // padding-right: 50px;
@@ -80,20 +91,167 @@
     }
   }
 
-  .chatContainer {
-    flex: 2;
-    background-color: rgb(107, 177, 139);
+  // .chatContainer {
+  //   flex: 1;
+  //   background-color: rgb(107, 177, 139);
 
-    // background-color: #fcf5f3;
-    height: 100%;
+  //   // background-color: #fcf5f3;
+  //   height: 100%;
+  //   @include md {
+  //     flex: none;
+  //     height: max-content;
+  //   }
+  // }
+
+  // .wrapper {
+  //   padding: 0px 20px;
+  //   height: 100%;
+  // }
+
+  .chatContainer {
+    background-color: black;
+    // background-color: mediumseagreen;
+
+    flex: 1; // Takes 1/4 of the available width
+    height: 100%; // Ensure full height
+    overflow-y: auto; // Allow vertical scrolling
+    padding: 15px;
+    margin-bottom: 100px;
+    border-left: 1px solid #ddd; // Optional: add a divider
     @include md {
       flex: none;
-      height: max-content;
+      overflow: scroll;
+      &::-webkit-scrollbar {
+        display: none; /* Hide the scrollbar in webkit browsers */
+      }
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      @include md {
+        flex: none;
+        overflow: scroll;
+        &::-webkit-scrollbar {
+          display: none; /* Hide the scrollbar in webkit browsers */
+        }
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 8px; // Customize scrollbar width
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #ccc; // Customize scrollbar color
+      border-radius: 4px;
     }
   }
-
-  .wrapper {
-    padding: 0px 20px;
-    height: 100%;
-  }
 }
+
+// .profilePage {
+//   // background-color: blueviolet;
+//   // padding-top: 15px;
+//   // display: flex;
+//   // height: 100%;
+
+//   display: flex;
+//   // flex-direction: column;
+//   // position: relative;
+//   // width: 100%;
+//   height: 100vh;
+//   overflow: hidden;
+//   overflow-y: auto;
+
+//   @include md {
+//     flex-direction: column;
+//     overflow: scroll;
+//     &::-webkit-scrollbar {
+//       display: none; /* Hide the scrollbar in webkit browsers */
+//     }
+//   }
+
+//   .details {
+//     background-color: blueviolet;
+//     // flex: 3;
+//     height: 100%;
+//     width: 100%;
+//     overflow-y: scroll;
+//     padding-bottom: 50px;
+//     margin-bottom: 50px;
+//     @include md {
+//       flex: none;
+//       height: max-content;
+//     }
+//     .wrapper {
+//       // padding-right: 50px;
+//       display: flex;
+//       flex-direction: column;
+//       gap: 50px;
+
+//       .title {
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+
+//         h1 {
+//           display: flex;
+//           align-items: center;
+//           justify-content: space-between;
+//         }
+//         button {
+//           padding: 12px 24px;
+//           // background-color: #fece51;
+//           background-color: mediumseagreen;
+//           cursor: pointer;
+//           border: none;
+//         }
+//       }
+//       .info {
+//         display: flex;
+//         flex-direction: column;
+//         gap: 20px;
+
+//         span {
+//           display: flex;
+//           align-items: center;
+//           gap: 20px;
+//         }
+
+//         img {
+//           width: 40px;
+//           height: 40px;
+//           border-radius: 50%;
+//           object-fit: cover;
+//         }
+
+//         button {
+//           width: 100px;
+//           background-color: mediumseagreen;
+//           border: none;
+//           color: white;
+//           padding: 10px 20px;
+//           border-radius: 5px;
+//           cursor: pointer;
+//         }
+//       }
+//     }
+//   }
+
+//   .chatContainer {
+//     flex: 2;
+//     background-color: rgb(107, 177, 139);
+
+//     // background-color: #fcf5f3;
+//     height: 100%;
+//     @include md {
+//       flex: none;
+//       height: max-content;
+//     }
+//   }
+
+//   .wrapper {
+//     padding: 0px 20px;
+//     height: 100%;
+//   }
+// }
